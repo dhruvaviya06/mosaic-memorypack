@@ -1,0 +1,27 @@
+{
+  "case_id": "sim_swap_fraud",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf"
+  ],
+  "category": "Account compromise - SIM swap to intercept OTP/SMS second factor",
+  "risk_signals": [
+    "Sudden loss of mobile network / SIM deactivation on the victim's handset",
+    "An unexpected 'SIM change' or porting confirmation message",
+    "OTPs and transaction alerts stop arriving, followed by unauthorised transfers"
+  ],
+  "analyst_reasoning": "If SMS OTP is the second factor, an attacker who obtains a duplicate SIM (via telco social engineering or an insider) receives the victim's OTPs and can reset banking credentials. The loss of signal is the pivot point: the attacker now controls the second factor.",
+  "investigation_steps": [
+    "Build a timeline of the SIM swap/port event against the fraudulent transactions",
+    "Obtain telco records on who requested the SIM change and how it was authenticated",
+    "Check for new-device logins and beneficiary additions immediately after the swap"
+  ],
+  "decision": "Freeze the account, coordinate with the telecom operator to reverse the SIM change, and move the customer to app-based authentication.",
+  "outcome": "Funds are transferred during the window the attacker controls the SIM; recovery depends on how fast the swap is detected.",
+  "lessons_learned": [
+    "SMS OTP is a weak second factor because the SIM itself can be captured",
+    "Loss of mobile signal plus a SIM-change message is an early warning of takeover",
+    "App-based or hardware second factors materially reduce SIM-swap exposure"
+  ]
+}

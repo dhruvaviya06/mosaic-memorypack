@@ -1,0 +1,28 @@
+{
+  "case_id": "cross_border_money_laundering",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2022,
+  "source_documents": [
+    "fiu_ind_str_trend_analysis.pdf",
+    "https://www.fatf-gafi.org (Trade-Based Money Laundering - Trends & Developments 2020; Risk Indicators 2021)"
+  ],
+  "category": "AML - cross-border layering across jurisdictions",
+  "risk_signals": [
+    "Transfers to or from high-risk or secrecy jurisdictions with no economic rationale",
+    "Funds moved through multiple countries or correspondent-banking hops before returning",
+    "Cross-border wire patterns inconsistent with the customer's business geography"
+  ],
+  "analyst_reasoning": "Cross-border layering exploits gaps between jurisdictions to break the audit trail. The laundering value is in the movement itself, so the diagnostic is transfers that lack a business reason, route through high-risk or secrecy jurisdictions, and add hops that serve only to obscure origin.",
+  "investigation_steps": [
+    "Map the full cross-border path including correspondent-bank intermediaries",
+    "Score counterpart jurisdictions for AML risk and secrecy",
+    "Test each leg for a genuine underlying economic purpose"
+  ],
+  "decision": "File an STR, apply enhanced due diligence on the corridor, and coordinate with correspondent banks / FIU where cross-border cooperation is needed.",
+  "outcome": "Multi-jurisdiction layering is among the hardest to trace; early corridor-level monitoring is the main defence.",
+  "lessons_learned": [
+    "Movement without economic rationale is the essence of cross-border layering",
+    "Correspondent-banking hops can hide the true origin and must be mapped end to end",
+    "Jurisdiction risk scoring is central to prioritising cross-border alerts"
+  ]
+}

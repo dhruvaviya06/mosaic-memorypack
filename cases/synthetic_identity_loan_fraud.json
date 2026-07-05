@@ -1,0 +1,27 @@
+{
+  "case_id": "synthetic_identity_loan_fraud",
+  "institution": "Sector-wide typology - credit / lending",
+  "year": 2022,
+  "source_documents": [
+    "https://fedpaymentsimprovement.org (Federal Reserve white paper: Synthetic Identity Fraud in the U.S. Payment System)"
+  ],
+  "category": "Credit fraud - synthetic identity (fabricated identity bust-out)",
+  "risk_signals": [
+    "An identity combining real and fabricated data elements (e.g., a valid ID number with a fictitious name/DOB)",
+    "A thin, newly built credit file with no long real-world footprint behind the person",
+    "Rapid credit-building across lenders followed by a coordinated 'bust-out' default"
+  ],
+  "analyst_reasoning": "Synthetic identity fraud invents a person who does not exist by stitching together real and fake attributes, nurtures creditworthiness over time, then maxes out and disappears. Because there is no real victim to complain, it hides as ordinary credit losses; the tell is the absence of a genuine human footprint behind the identity.",
+  "investigation_steps": [
+    "Verify that identity elements belong to one real, consistent person across authoritative sources",
+    "Look for thin-file, rapid-credit-building profiles with no deep real-world history",
+    "Detect coordinated bust-out patterns across multiple lenders for linked identities"
+  ],
+  "decision": "Decline/close the exposure, report the synthetic identity, and share indicators with bureaus and peer lenders.",
+  "outcome": "Bust-outs surface as clustered charge-offs with no recoverable person behind them; identity-verification depth is the main defence.",
+  "lessons_learned": [
+    "Synthetic identities have no genuine human footprint - identity depth beats document checks",
+    "Thin files that build credit fast then bust out are the classic signature",
+    "Losses look like normal credit charge-offs, so specific detection logic is needed"
+  ]
+}

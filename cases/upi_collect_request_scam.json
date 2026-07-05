@@ -1,0 +1,28 @@
+{
+  "case_id": "upi_collect_request_scam",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "https://www.npci.org.in (UPI circulars - collect-request limits, fraud advisories)"
+  ],
+  "category": "Digital payment fraud - UPI collect-request social engineering",
+  "risk_signals": [
+    "Victim receives an unexpected UPI 'collect' (pull-payment) request framed as a refund, prize, or incoming payment",
+    "Instruction to 'enter your UPI PIN to receive money' - receiving never requires a PIN",
+    "Request originates from a marketplace/classifieds deal (OLX-style) or an urgent refund pretext"
+  ],
+  "analyst_reasoning": "A UPI collect request is a request to PAY, not receive. Fraudsters exploit the confusion by disguising a debit request as an incoming credit, so approving it with a PIN debits the victim. The tell is that any flow asking for a PIN to 'receive' money is inverted from how UPI works.",
+  "investigation_steps": [
+    "Pull the victim's UPI transaction log and identify approved collect requests and their payee VPAs",
+    "Check the reputation/age of the payee Virtual Payment Address and whether it is newly created",
+    "Correlate the timing with a marketplace contact or refund pretext"
+  ],
+  "decision": "Block the payee VPA, alert the customer that PIN entry is never needed to receive money, and file a complaint / cyber-crime report promptly to attempt recall of funds.",
+  "outcome": "Funds are debited and often quickly layered onward; recovery depends on speed of reporting and the receiving bank freezing the mule account.",
+  "lessons_learned": [
+    "Receiving money on UPI never requires entering a PIN - PIN entry always authorises a debit",
+    "Collect requests from unknown VPAs tied to marketplace deals are a red flag",
+    "Speed of reporting is the single biggest driver of fund recovery"
+  ]
+}

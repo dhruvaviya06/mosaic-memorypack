@@ -1,0 +1,28 @@
+{
+  "case_id": "terror_financing_indicators",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2019,
+  "source_documents": [
+    "https://www.fatf-gafi.org (Terrorist Financing Risk Assessment Guidance, Jul 2019)",
+    "fiu_ind_str_trend_analysis.pdf"
+  ],
+  "category": "AML - terrorist-financing indicators",
+  "risk_signals": [
+    "Small, structured transfers or collections routed toward conflict or high-risk regions",
+    "Non-profit or charity accounts whose flows diverge from their stated purpose",
+    "Any nexus to sanctioned individuals, entities, or listed organisations"
+  ],
+  "analyst_reasoning": "Terror financing often involves small amounts (so it evades value-based thresholds) and legitimate-seeming vehicles like NPOs. Detection therefore leans on destination, purpose, and sanctions nexus rather than transaction size - the opposite emphasis to most laundering typologies.",
+  "investigation_steps": [
+    "Screen all parties against sanctions and terrorist-designation lists",
+    "Assess NPO/charity flows for diversion from stated charitable purpose",
+    "Analyse geographic routing toward conflict/high-risk regions despite small values"
+  ],
+  "decision": "File an STR/relevant report immediately, freeze where a sanctions match exists, and escalate to the FIU and authorities.",
+  "outcome": "Because amounts are small, TF is missed by value thresholds; sanctions and purpose screening are the effective controls.",
+  "lessons_learned": [
+    "Terror financing is about destination, purpose, and sanctions nexus, not transaction size",
+    "NPO/charity misuse is a recognised TF channel requiring purpose-level scrutiny",
+    "Sanctions screening is a non-negotiable control, however small the amount"
+  ]
+}

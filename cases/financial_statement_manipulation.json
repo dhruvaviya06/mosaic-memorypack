@@ -1,0 +1,28 @@
+{
+  "case_id": "financial_statement_manipulation",
+  "institution": "Sector-wide typology - corporate financial reporting",
+  "year": 2024,
+  "source_documents": [
+    "acfe_report_to_the_nations_2024.pdf",
+    "https://www.sebi.gov.in (SEBI Prohibition of Insider Trading Regulations 2015 + enforcement orders)"
+  ],
+  "category": "Financial statement fraud - overstated revenue/assets, understated liabilities",
+  "risk_signals": [
+    "Reported revenue and profit growth not matched by operating cash flow",
+    "Fictitious receivables, cash balances, or sham related-party transactions inflating the books",
+    "Auditor concerns, frequent restatements, or aggressive revenue-recognition changes"
+  ],
+  "analyst_reasoning": "Financial-statement fraud makes a company look healthier than it is, usually to support the share price or secure funding. As ACFE data notes it is the least frequent but most costly fraud type; the enduring tell (as in the Satyam case) is a divergence between reported profits and real cash, propped up by fictitious assets.",
+  "investigation_steps": [
+    "Reconcile reported earnings against operating cash flow and independent bank confirmations",
+    "Scrutinise related-party transactions and revenue-recognition timing for manipulation",
+    "Assess auditor changes, restatements, and internal-control weaknesses"
+  ],
+  "decision": "Escalate for forensic audit, restrict reliance on the statements, and refer to the securities regulator where investors are affected.",
+  "outcome": "Statement fraud collapses spectacularly when the cash-vs-profit gap is exposed, as in Satyam; cash-based verification is the key test.",
+  "lessons_learned": [
+    "Profit that is not backed by cash is the enduring financial-statement-fraud signal",
+    "Fictitious assets and sham related-party deals are the classic mechanisms",
+    "Auditor turnover and restatements are meaningful early warnings"
+  ]
+}

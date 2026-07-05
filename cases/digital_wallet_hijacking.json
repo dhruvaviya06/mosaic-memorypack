@@ -1,0 +1,28 @@
+{
+  "case_id": "digital_wallet_hijacking",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "https://www.rbi.org.in (Master Direction - Digital Payment Security Controls, Feb 2021)"
+  ],
+  "category": "Digital wallet takeover and draining",
+  "risk_signals": [
+    "A new device is linked to the wallet, or wallet KYC/registered number is changed",
+    "Rapid drain of wallet balance and any linked bank account or card",
+    "Takeover often preceded by SIM swap, OTP phishing, or credential compromise"
+  ],
+  "analyst_reasoning": "A wallet consolidates balance plus linked funding sources, so taking it over yields immediate liquidity. Attackers gain entry through the usual vectors (SIM swap, OTP phishing) then link a new device and drain fast before alerts are acted on. The new-device-link event is the pivot.",
+  "investigation_steps": [
+    "Review device-link history and KYC/number changes on the wallet",
+    "Trace the drain path from wallet balance to linked bank/card and onward beneficiaries",
+    "Identify the entry vector (SIM swap, phishing, malware) from surrounding events"
+  ],
+  "decision": "Freeze the wallet, unlink the rogue device, break links to bank/card, and re-verify the customer before restoring access.",
+  "outcome": "Wallets are drained within minutes of takeover; loss size depends on balance and linked-account limits.",
+  "lessons_learned": [
+    "An unrecognised device-link or KYC change is the earliest sign of wallet takeover",
+    "Wallets inherit the risk of every funding source linked to them",
+    "Fast unlinking of the rogue device is the key containment step"
+  ]
+}

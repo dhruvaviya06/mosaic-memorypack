@@ -1,0 +1,27 @@
+{
+  "case_id": "payroll_diversion_fraud",
+  "institution": "Sector-wide typology - corporate / occupational fraud",
+  "year": 2024,
+  "source_documents": [
+    "acfe_report_to_the_nations_2024.pdf"
+  ],
+  "category": "Occupational fraud - payroll scheme (ghost employees / diverted pay)",
+  "risk_signals": [
+    "'Employees' with no attendance, tax, or independent HR footprint (ghost workers)",
+    "Multiple salaries routed to the same or an employee-controlled bank account",
+    "Unexplained changes to payroll bank details shortly before pay runs"
+  ],
+  "analyst_reasoning": "Payroll schemes divert company funds through fake employees, inflated hours, or redirected salary payments. The signature is a payee that lacks the corroborating footprint of a real worker, or legitimate salaries quietly rerouted to an insider-controlled account.",
+  "investigation_steps": [
+    "Reconcile the payroll register against HR, attendance, and tax records to find ghosts",
+    "Detect duplicate or employee-linked bank accounts receiving multiple salaries",
+    "Review payroll bank-detail change logs around pay-run dates"
+  ],
+  "decision": "Freeze the suspect payroll entries, audit the payroll-master change controls, and act on confirmed ghost or diversion entries.",
+  "outcome": "Payroll fraud recurs every cycle until master-data controls detect it; HR-payroll reconciliation is the key control.",
+  "lessons_learned": [
+    "A payee with no HR/tax footprint is the defining ghost-employee signal",
+    "Bank-detail changes just before pay runs are a payroll-diversion red flag",
+    "Payroll-master change control and periodic reconciliation are essential"
+  ]
+}

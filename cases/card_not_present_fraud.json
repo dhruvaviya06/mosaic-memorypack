@@ -1,0 +1,28 @@
+{
+  "case_id": "card_not_present_fraud",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "https://www.rbi.org.in (Master Direction - Digital Payment Security Controls, Feb 2021)"
+  ],
+  "category": "Card-not-present (CNP) fraud - use of stolen card data online",
+  "risk_signals": [
+    "Small 'testing' authorisations followed by a large purchase (card-testing pattern)",
+    "High-velocity attempts across many cards from one device/IP, or sequential BIN attacks",
+    "Mismatch between billing and shipping details, or shipping to a freight-forwarder"
+  ],
+  "analyst_reasoning": "With stolen PAN/expiry/CVV, fraudsters transact online where no physical card is needed. They first validate cards with tiny charges, then monetise with larger purchases. The signatures are velocity, card-testing, and billing/shipping mismatches rather than any single transaction looking wrong.",
+  "investigation_steps": [
+    "Detect card-testing: clusters of small authorisations preceding a large charge",
+    "Measure velocity and BIN-attack patterns per device fingerprint and IP",
+    "Flag billing/shipping mismatches and reship/freight-forwarder destinations"
+  ],
+  "decision": "Decline and step-up (3-D Secure / OTP) on risk-scored transactions, block offending device/IP, and push tokenization for stored cards.",
+  "outcome": "Successful CNP fraud results in chargebacks to the merchant; tokenization and 2-factor step-up sharply reduce it.",
+  "lessons_learned": [
+    "Card-testing micro-authorisations are an early indicator of a compromised-card run",
+    "Velocity and billing/shipping mismatch are stronger signals than any single transaction",
+    "Tokenization and 3-D Secure are the structural defences against CNP fraud"
+  ]
+}

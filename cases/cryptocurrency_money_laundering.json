@@ -1,0 +1,27 @@
+{
+  "case_id": "cryptocurrency_money_laundering",
+  "institution": "Sector-wide typology - virtual assets / VASPs",
+  "year": 2020,
+  "source_documents": [
+    "https://www.fatf-gafi.org (Virtual Assets Red Flag Indicators, Sept 2020)"
+  ],
+  "category": "AML - laundering through virtual assets and VASPs",
+  "risk_signals": [
+    "Structured fiat-to-crypto purchases across multiple exchanges to stay under thresholds",
+    "Use of mixers/tumblers, privacy coins, or chain-hopping to break traceability",
+    "Wallet exposure to darknet markets, scams, or sanctioned addresses"
+  ],
+  "analyst_reasoning": "Virtual assets enable fast, cross-border, pseudonymous value transfer. Launderers convert illicit fiat into crypto, then obscure the trail with mixers, privacy coins, and chain-hopping before cashing out. FATF's red-flag framework centres on obfuscation techniques and counterparty exposure rather than the transaction size alone.",
+  "investigation_steps": [
+    "Trace on-chain flows and screen counterparties for darknet, scam, or sanctioned exposure",
+    "Detect mixer/tumbler use, privacy-coin conversion, and chain-hopping between assets",
+    "Correlate fiat on-ramp/off-ramp activity at VASPs with structuring patterns"
+  ],
+  "decision": "File an STR, restrict the VASP relationship, and use blockchain-analytics attribution to support the report.",
+  "outcome": "Once mixed or bridged, crypto proceeds are difficult to attribute; on-ramp/off-ramp monitoring at VASPs is the key control point.",
+  "lessons_learned": [
+    "Obfuscation techniques (mixers, privacy coins, chain-hopping) are the core crypto-ML red flags",
+    "Fiat on-ramps and off-ramps at VASPs are the practical monitoring choke points",
+    "Counterparty (address) exposure matters more than transaction size on-chain"
+  ]
+}

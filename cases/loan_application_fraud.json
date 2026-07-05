@@ -1,0 +1,27 @@
+{
+  "case_id": "loan_application_fraud",
+  "institution": "Sector-wide typology - credit / lending",
+  "year": 2022,
+  "source_documents": [
+    "https://www.rbi.org.in (Master Directions on Frauds - Classification & Reporting, incl. Early Warning Signals)"
+  ],
+  "category": "Credit fraud - falsified income/documents to obtain a loan",
+  "risk_signals": [
+    "Income proofs that do not reconcile with bank-statement cash flows or tax records",
+    "Inconsistent or templated KYC documents, often routed through a third-party facilitator/agent",
+    "Default on the very first instalments, indicating no genuine repayment intent"
+  ],
+  "analyst_reasoning": "Application fraud inflates or fabricates the borrower's capacity to repay so a loan is sanctioned that never should have been. The documents are internally inconsistent because they are manufactured, and first-payment default reveals the intent - which is exactly what early-warning-signal frameworks are designed to catch.",
+  "investigation_steps": [
+    "Reconcile declared income against bank statements, tax filings, and employer verification",
+    "Check documents for templating, reuse, or a common facilitator across applications",
+    "Flag first-payment or very-early defaults for fraud review, not just collections"
+  ],
+  "decision": "Reject or recall the facility, file a fraud report under the frauds-classification framework, and review the originating agent's other files.",
+  "outcome": "Fraudulent loans crystallise as early NPAs; document reconciliation at underwriting is the cheapest point to stop them.",
+  "lessons_learned": [
+    "Internal inconsistency between income proofs and cash flows is the core application-fraud signal",
+    "First-payment default should trigger a fraud review, not just collections",
+    "A shared facilitator across many suspect files points to an organised ring"
+  ]
+}

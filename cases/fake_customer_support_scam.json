@@ -1,0 +1,27 @@
+{
+  "case_id": "fake_customer_support_scam",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf"
+  ],
+  "category": "Social engineering - fake bank customer-support / remote-access scam",
+  "risk_signals": [
+    "Victim calls a 'helpline' number found via a search engine or ad rather than the official site",
+    "'Support agent' asks the victim to install a remote-access/screen-sharing app (AnyDesk, TeamViewer)",
+    "Guidance to make a 'test' transaction or read out OTPs to 'resolve' an issue"
+  ],
+  "analyst_reasoning": "Fraudsters seed fake support numbers online; once the victim calls, they gain trust as 'the bank' and use remote-access tools to watch the screen and drive transactions, or coax OTPs directly. The install of a screen-sharing app is the decisive escalation.",
+  "investigation_steps": [
+    "Identify how the victim obtained the number (search ad, SMS, fake site)",
+    "Check the device for recently installed remote-access applications and their session logs",
+    "Correlate the remote session window with the unauthorised transactions"
+  ],
+  "decision": "Terminate remote sessions, uninstall the remote-access app, freeze the account, and reset credentials from a trusted device.",
+  "outcome": "With screen control the fraudster can complete transfers directly; loss ends when the remote session is cut.",
+  "lessons_learned": [
+    "Genuine bank support never asks you to install a screen-sharing app",
+    "Helpline numbers must come from the official bank site, not search results",
+    "Remote-access installation during a 'support' call is an immediate stop signal"
+  ]
+}

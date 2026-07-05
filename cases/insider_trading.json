@@ -1,0 +1,27 @@
+{
+  "case_id": "insider_trading",
+  "institution": "Sector-wide typology - securities markets",
+  "year": 2015,
+  "source_documents": [
+    "https://www.sebi.gov.in (SEBI Prohibition of Insider Trading Regulations 2015 + enforcement orders)"
+  ],
+  "category": "Market abuse - trading on unpublished price-sensitive information",
+  "risk_signals": [
+    "Well-timed trades by insiders or connected persons just before material announcements",
+    "Unusual volume or option activity ahead of price-sensitive news",
+    "Trading through relatives, associates, or entities to distance the insider"
+  ],
+  "analyst_reasoning": "Insider trading monetises unpublished price-sensitive information ahead of the market. The signature is timing and connection: trades that cluster just before announcements and originate from insiders or their proxies, which is what insider-trading regulation and surveillance are built to detect.",
+  "investigation_steps": [
+    "Overlay trading activity against the timeline of material corporate announcements",
+    "Map connected persons, relatives, and controlled entities around the insider",
+    "Screen for abnormal volume, price, and derivatives activity pre-announcement"
+  ],
+  "decision": "Refer for market-surveillance investigation, restrict/monitor accounts, and pursue enforcement where a UPSI link is established.",
+  "outcome": "Insider trading distorts market fairness; pattern-of-timing plus connection evidence underpins enforcement action.",
+  "lessons_learned": [
+    "Timing relative to announcements plus insider connection is the core signal",
+    "Trading through relatives and associates is the standard concealment device",
+    "Pre-announcement volume/derivatives anomalies focus surveillance"
+  ]
+}

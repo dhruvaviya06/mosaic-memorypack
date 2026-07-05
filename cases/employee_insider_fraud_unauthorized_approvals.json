@@ -1,0 +1,28 @@
+{
+  "case_id": "employee_insider_fraud_unauthorized_approvals",
+  "institution": "Sector-wide typology - corporate / occupational fraud",
+  "year": 2024,
+  "source_documents": [
+    "acfe_report_to_the_nations_2024.pdf",
+    "https://www.rbi.org.in (Master Directions on Frauds - Classification & Reporting, incl. Early Warning Signals)"
+  ],
+  "category": "Occupational fraud - abuse of approval authority / control override",
+  "risk_signals": [
+    "Employees approving their own transactions or overriding system controls",
+    "Use of dormant, suspense, or customer accounts to route unauthorised entries",
+    "Transactions structured just under the employee's approval limit"
+  ],
+  "analyst_reasoning": "Insiders with approval authority can bypass the very controls meant to check them, self-approving or overriding to move funds. The signature is control override and self-dealing - segregation-of-duties failures - often hidden in dormant or suspense accounts and sized to stay under personal limits.",
+  "investigation_steps": [
+    "Review self-approvals, control overrides, and segregation-of-duties exceptions in logs",
+    "Monitor dormant, suspense, and internal accounts for unexplained movement",
+    "Detect transactions clustered just below the approver's authority limit"
+  ],
+  "decision": "Revoke excess entitlements, enforce maker-checker separation, and pursue disciplinary/legal action on confirmed abuse.",
+  "outcome": "Authority abuse persists until segregation-of-duties and override monitoring catch it; entitlement governance is central.",
+  "lessons_learned": [
+    "Self-approval and control override are the defining insider-authority-abuse signals",
+    "Dormant and suspense accounts are favoured hiding places and must be monitored",
+    "Segregation of duties and least-privilege entitlements are the core preventive controls"
+  ]
+}

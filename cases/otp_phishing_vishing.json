@@ -1,0 +1,27 @@
+{
+  "case_id": "otp_phishing_vishing",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf"
+  ],
+  "category": "Social engineering - OTP phishing and vishing",
+  "risk_signals": [
+    "Caller or message impersonates the bank and asks the customer to share an OTP, CVV, or PIN",
+    "Urgent pretext: account/card 'blocked', KYC expiry, reward, or refund",
+    "Spoofed caller ID or a fake website mimicking the bank"
+  ],
+  "analyst_reasoning": "Banks never ask for OTP/CVV/PIN, so any request to share them is fraudulent by definition. The attacker manufactures urgency to bypass the victim's caution and harvest the exact secret needed to authorise a transaction.",
+  "investigation_steps": [
+    "Establish the contact channel (call/SMS/fake site) and whether caller ID was spoofed",
+    "Match the time the OTP was shared to the fraudulent transaction",
+    "Identify the phishing domain or number and whether it recurs across complaints"
+  ],
+  "decision": "Block the transaction if still in flight, reset credentials, and reinforce that the bank never requests OTP/CVV/PIN.",
+  "outcome": "Sharing the OTP completes the fraudster's transaction; refusing to share it stops the attack outright.",
+  "lessons_learned": [
+    "No legitimate bank ever asks for OTP, CVV, or PIN - that request alone identifies fraud",
+    "Manufactured urgency is the core lever of vishing",
+    "The OTP step is the last line of defence and must never be shared"
+  ]
+}

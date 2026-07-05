@@ -1,0 +1,28 @@
+{
+  "case_id": "mule_account_network",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "fiu_ind_str_trend_analysis.pdf"
+  ],
+  "category": "AML - money-mule accounts used to receive and forward illicit proceeds",
+  "risk_signals": [
+    "A recently opened or dormant account suddenly used for rapid pass-through of funds",
+    "Many small credits followed almost immediately by withdrawal or onward transfer",
+    "Account holder recruited via a job/'work from home' or easy-money scam, with activity mismatched to profile"
+  ],
+  "analyst_reasoning": "Mules are the laundering layer of most digital frauds: proceeds land in a mule account and are moved on within minutes to break the trail. The signature is pass-through velocity - money in, money out, little balance retained - in an account whose owner has no economic reason for the flow.",
+  "investigation_steps": [
+    "Measure in/out velocity and residual balance to spot pass-through behaviour",
+    "Map the network of upstream senders and downstream beneficiaries to find the mule ring",
+    "Check whether the account holder fits a recruited-mule profile (student, new-to-bank, sudden activity)"
+  ],
+  "decision": "Freeze the account, file an STR, and trace the network both upstream (victims) and downstream (aggregation points).",
+  "outcome": "Mule networks fragment and relay stolen funds quickly; freezing early nodes is the main chance to recover victim money.",
+  "lessons_learned": [
+    "Rapid in-and-out pass-through with negligible retained balance is the core mule signal",
+    "Mule detection must map networks, not just single accounts",
+    "Job-scam recruitment feeds mule supply, so profile mismatch matters"
+  ]
+}

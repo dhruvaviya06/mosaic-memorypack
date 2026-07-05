@@ -1,0 +1,27 @@
+{
+  "case_id": "pep_transactions",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2022,
+  "source_documents": [
+    "https://www.fatf-gafi.org (Guidance on Politically Exposed Persons, Rec 12/22)"
+  ],
+  "category": "AML - politically exposed person (PEP) and corruption-proceeds risk",
+  "risk_signals": [
+    "Transaction values or wealth inconsistent with the PEP's known legitimate income",
+    "Funds routed through family members, associates, or shell entities to distance the PEP",
+    "Flows timed around public procurement, contracts, or tenders the PEP could influence"
+  ],
+  "analyst_reasoning": "PEPs carry heightened corruption and bribery risk because their public position can be monetised. The laundering signature is unexplained wealth relative to office, layered through proxies to obscure the connection, and often linked to state contracts - so source-of-wealth verification is central.",
+  "investigation_steps": [
+    "Establish and verify the PEP's source of wealth and source of funds",
+    "Map close associates, family, and controlled entities used as conduits",
+    "Correlate significant flows with procurement, tenders, or contracts within the PEP's influence"
+  ],
+  "decision": "Apply enhanced due diligence and senior-management sign-off, and file an STR where wealth or flows cannot be explained.",
+  "outcome": "Corruption proceeds laundered via proxies are hard to attribute; source-of-wealth verification is the decisive control.",
+  "lessons_learned": [
+    "Unexplained wealth versus known income is the central PEP red flag",
+    "Family, associates, and shell entities are the standard PEP layering conduits",
+    "PEP relationships require enhanced due diligence and source-of-wealth verification by policy"
+  ]
+}

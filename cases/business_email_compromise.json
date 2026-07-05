@@ -1,0 +1,27 @@
+{
+  "case_id": "business_email_compromise",
+  "institution": "Sector-wide typology - corporate payments / cross-border wires",
+  "year": 2022,
+  "source_documents": [
+    "https://www.ic3.gov (FBI IC3 - BEC PSAs and Annual Report)"
+  ],
+  "category": "Business Email Compromise (BEC) - payment-redirection fraud",
+  "risk_signals": [
+    "A last-minute change of a vendor's or executive's bank account details requested over email",
+    "Lookalike or spoofed sender domain, often with urgency and a request for secrecy",
+    "Payment instruction that bypasses the normal approval or verification workflow"
+  ],
+  "analyst_reasoning": "Attackers compromise or spoof a trusted email account (executive or supplier) and redirect an otherwise-legitimate payment to a fraud account. The fraud rides on real business context, so the tells are the channel (email-only), the change (bank details), and the pressure (urgency/secrecy) rather than any technical anomaly.",
+  "investigation_steps": [
+    "Verify the account-change request through an independent, pre-established channel (a known phone number)",
+    "Analyse email headers and the sender domain for spoofing or lookalike registration",
+    "Check whether the payment skipped standard dual-approval or vendor-master controls"
+  ],
+  "decision": "Halt the payment, confirm details out-of-band with the counterparty, and if funds have moved, request a recall and file with IC3/authorities immediately.",
+  "outcome": "Redirected wires are frequently large and cross-border; recovery depends on same-day recall requests before funds are withdrawn.",
+  "lessons_learned": [
+    "Any emailed change of bank details must be verified out-of-band before payment",
+    "Urgency plus secrecy plus a payment change is the BEC signature",
+    "Vendor-master and dual-approval controls exist precisely to stop single-channel redirection"
+  ]
+}

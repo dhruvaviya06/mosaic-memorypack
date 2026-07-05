@@ -1,0 +1,27 @@
+{
+  "case_id": "early_loan_default_pattern",
+  "institution": "Sector-wide typology - credit / lending",
+  "year": 2022,
+  "source_documents": [
+    "https://www.rbi.org.in (Master Directions on Frauds - Classification & Reporting, incl. Early Warning Signals)"
+  ],
+  "category": "Credit fraud - early-default / first-party fraud pattern (early warning signals)",
+  "risk_signals": [
+    "Default within the first few instalments after disbursal",
+    "Loan proceeds diverted or withdrawn immediately rather than used for the stated purpose",
+    "Clusters of early defaults sharing an originator, product, or geography"
+  ],
+  "analyst_reasoning": "When a borrower never intended to repay, the loan defaults almost immediately and the funds are siphoned at disbursal. Early-warning-signal frameworks treat this pattern - especially in clusters around a common originator - as a fraud indicator distinct from ordinary credit stress.",
+  "investigation_steps": [
+    "Flag and review all first-payment and very-early defaults as potential fraud",
+    "Trace end-use of disbursed funds for immediate diversion",
+    "Cluster early defaults by originator, product, branch, and geography to find organised activity"
+  ],
+  "decision": "Move early-default cases into fraud investigation, file reports where intent is established, and audit the common originator.",
+  "outcome": "Undetected, early-default fraud recurs through the same channel; EWS-driven clustering is what exposes the ring.",
+  "lessons_learned": [
+    "Very-early default plus immediate fund diversion signals intent, not misfortune",
+    "Clustering by originator/geography turns isolated defaults into a detectable pattern",
+    "Early-warning-signal review is a fraud control, not merely a collections trigger"
+  ]
+}

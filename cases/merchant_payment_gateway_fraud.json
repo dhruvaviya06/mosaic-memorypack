@@ -1,0 +1,28 @@
+{
+  "case_id": "merchant_payment_gateway_fraud",
+  "institution": "Sector-wide typology - merchant acquiring / payment aggregation",
+  "year": 2020,
+  "source_documents": [
+    "https://www.rbi.org.in (Guidelines on Payment Aggregators and Payment Gateways, Mar 2020)",
+    "https://www.rbi.org.in (Master Direction - Digital Payment Security Controls, Feb 2021)"
+  ],
+  "category": "Merchant / payment-gateway fraud - fake onboarding and transaction laundering",
+  "risk_signals": [
+    "Merchant transaction patterns inconsistent with the declared business profile",
+    "Elevated chargeback and refund-abuse rates, or bursts of refunds to unrelated cards",
+    "Transaction laundering: processing another (often prohibited) business's payments through the merchant account"
+  ],
+  "analyst_reasoning": "Weak merchant onboarding lets bad actors obtain an acquiring account and then launder transactions or abuse refunds. Because the merchant is 'inside' the payment rails, the anomalies show up as mismatches between the declared business and the actual transaction and refund behaviour.",
+  "investigation_steps": [
+    "Compare declared MCC/business profile against actual transaction mix and counterparties",
+    "Analyse chargeback and refund ratios and the destination cards of refunds",
+    "Trace whether the account is aggregating payments for an undisclosed third party"
+  ],
+  "decision": "Suspend settlement, re-run enhanced merchant due diligence, and offboard/report the merchant if laundering or shell activity is confirmed.",
+  "outcome": "Losses accrue through chargebacks and laundered volumes until settlement is held; strong onboarding prevents most cases.",
+  "lessons_learned": [
+    "Merchant onboarding due diligence is the primary control against gateway abuse",
+    "A transaction mix that does not match the declared business is the core red flag",
+    "Refund abuse and transaction laundering hide inside otherwise-normal merchant volume"
+  ]
+}

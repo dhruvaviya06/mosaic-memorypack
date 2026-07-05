@@ -1,0 +1,27 @@
+{
+  "case_id": "procurement_fraud",
+  "institution": "Sector-wide typology - corporate / occupational fraud",
+  "year": 2024,
+  "source_documents": [
+    "acfe_report_to_the_nations_2024.pdf"
+  ],
+  "category": "Occupational fraud - procurement corruption and bid-rigging",
+  "risk_signals": [
+    "Repeated awards to a single vendor, or bids clustered just below competitive-tender thresholds",
+    "Purchases split to stay under approval or tender limits",
+    "Undisclosed relationships between procurement staff and winning vendors"
+  ],
+  "analyst_reasoning": "Procurement fraud manipulates the buying process through kickbacks, bid-rigging, or conflicts of interest. As a corruption scheme it hides in seemingly valid contracts; the diagnostic patterns are competition that is not genuinely competitive and purchases structured to evade oversight thresholds.",
+  "investigation_steps": [
+    "Analyse award concentration and win rates by vendor for signs of rigging",
+    "Detect split purchases and bids clustered just under tender/approval thresholds",
+    "Screen for conflicts of interest between procurement staff and vendors"
+  ],
+  "decision": "Re-tender affected contracts, enforce conflict-of-interest declarations, and pursue action on confirmed collusion or kickbacks.",
+  "outcome": "Procurement corruption inflates costs quietly over time; competition analytics and conflict checks are the main controls.",
+  "lessons_learned": [
+    "Single-vendor award concentration and near-threshold bids indicate rigging",
+    "Split purchases are a deliberate device to evade oversight",
+    "Conflict-of-interest disclosure is a core preventive control in procurement"
+  ]
+}

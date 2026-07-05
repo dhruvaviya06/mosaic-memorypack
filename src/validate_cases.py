@@ -53,8 +53,13 @@ def validate_case(data: dict) -> tuple[list[str], list[str]]:
             errors.append(f"'{field}' must be an integer")
 
     # 4) Provenance: each listed source document should eventually exist in sources/.
+    #    URL references (light-tier cases) are valid as-is and need no local file.
     for name in data.get("source_documents", []) or []:
-        if isinstance(name, str) and not (SOURCES_DIR / name).exists():
+        if not isinstance(name, str):
+            continue
+        if name.startswith("http") or name.startswith("pending"):
+            continue  # URL reference (light tier) or explicitly pending — not a local file
+        if not (SOURCES_DIR / name).exists():
             warnings.append(f"source document not found in sources/ (yet): '{name}'")
 
     return errors, warnings

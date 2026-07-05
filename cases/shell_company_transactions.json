@@ -1,0 +1,28 @@
+{
+  "case_id": "shell_company_transactions",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2022,
+  "source_documents": [
+    "fiu_ind_str_trend_analysis.pdf",
+    "https://www.fatf-gafi.org (Beneficial Ownership - Recommendation 24)"
+  ],
+  "category": "AML - shell company layering and beneficial-ownership obfuscation",
+  "risk_signals": [
+    "Company with no genuine operations, employees, or physical presence moving significant funds",
+    "Complex, multi-layered ownership that obscures the ultimate beneficial owner",
+    "Round-sum transfers and turnover inconsistent with any real business activity"
+  ],
+  "analyst_reasoning": "Shell companies exist to move and layer value while hiding who ultimately controls it. Because the entity is legally real but economically empty, the red flags are the absence of substance (no staff, no premises, no trade rationale) combined with ownership layering designed to defeat beneficial-ownership checks.",
+  "investigation_steps": [
+    "Establish whether the entity has real operations: premises, employees, tax and trade footprint",
+    "Unwind the ownership chain to identify the ultimate beneficial owner",
+    "Test transaction rationale - do flows match any plausible business purpose"
+  ],
+  "decision": "Escalate for enhanced due diligence, demand beneficial-ownership evidence, and file an STR if substance cannot be established.",
+  "outcome": "Shell layers make funds hard to attribute; piercing beneficial ownership is the key to unwinding them.",
+  "lessons_learned": [
+    "Economic emptiness (no staff, premises, or trade) is the defining shell-company red flag",
+    "Ownership layering is designed to defeat beneficial-ownership checks and must be unwound",
+    "Transaction purpose that matches no real business is decisive"
+  ]
+}

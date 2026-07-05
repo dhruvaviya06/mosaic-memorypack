@@ -1,0 +1,28 @@
+{
+  "case_id": "fake_upi_intent_link_scam",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "https://www.npci.org.in (UPI circulars - collect-request limits, fraud advisories)"
+  ],
+  "category": "Digital payment fraud - malicious UPI deep-link (intent) phishing",
+  "risk_signals": [
+    "A shared link auto-opens a UPI app with payee and amount pre-filled, ready to authorise",
+    "Links delivered via SMS/chat/email from unknown senders with an urgent pretext",
+    "Payment screen appears without the user having initiated a transfer"
+  ],
+  "analyst_reasoning": "UPI 'intent' deep links (upi://) can pre-fill a payee and amount and launch the payment app directly. A victim who taps through and enters the PIN pays the fraudster. The manipulation is that the payment appears unprompted, exploiting habitual PIN entry.",
+  "investigation_steps": [
+    "Recover the intent link and decode the embedded payee VPA and amount",
+    "Identify the delivery channel and the phishing pretext",
+    "Check whether the payee VPA appears across multiple victim reports"
+  ],
+  "decision": "Block the payee VPA, warn against tapping payment links from unknown sources, and report the phishing infrastructure.",
+  "outcome": "If the PIN is entered the debit completes; unentered links cause no loss, so awareness stops most attempts.",
+  "lessons_learned": [
+    "A payment screen you did not initiate is a red flag - never enter a PIN on an unprompted request",
+    "Deep links from unknown senders should never be tapped",
+    "Only the PIN step completes a debit, so pausing there prevents the loss"
+  ]
+}

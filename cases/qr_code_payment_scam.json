@@ -1,0 +1,28 @@
+{
+  "case_id": "qr_code_payment_scam",
+  "institution": "Sector-wide typology - Indian retail digital payments",
+  "year": 2022,
+  "source_documents": [
+    "https://rbidocs.rbi.org.in/rdocs/content/pdfs/BEAWARE07032022.pdf",
+    "https://www.npci.org.in (UPI circulars - collect-request limits, fraud advisories)"
+  ],
+  "category": "Digital payment fraud - QR code scan-to-pay deception",
+  "risk_signals": [
+    "Victim is told to scan a QR code 'to receive' a payment or refund",
+    "A marketplace buyer/seller insists the counterparty scan a QR to complete a deal",
+    "QR shared over chat/email from an unverified source"
+  ],
+  "analyst_reasoning": "Scanning a UPI QR always initiates a payment FROM the scanner. Fraudsters reframe a scan as a way to receive money, so the victim authorises a debit believing it is a credit. Like the collect-request scam, the deception inverts the direction of money flow.",
+  "investigation_steps": [
+    "Trace the QR's encoded VPA and amount and match it to the debit in the victim's log",
+    "Assess whether the payee VPA is newly created or linked to prior complaints",
+    "Establish the pretext channel (classifieds, social media, chat)"
+  ],
+  "decision": "Freeze/blacklist the payee VPA, educate the customer that scanning a QR only ever pays out, and file a prompt fraud report.",
+  "outcome": "The scanned amount is debited to the fraudster; recovery hinges on early reporting and mule-account freezing.",
+  "lessons_learned": [
+    "Scanning any payment QR sends money out; it never receives money",
+    "A counterparty who insists you scan a QR to 'get paid' is a strong fraud signal",
+    "Consumer education on scan-direction is the cheapest control"
+  ]
+}

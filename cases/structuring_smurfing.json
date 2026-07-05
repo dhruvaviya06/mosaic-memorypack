@@ -1,0 +1,27 @@
+{
+  "case_id": "structuring_smurfing",
+  "institution": "Sector-wide typology - AML / financial crime",
+  "year": 2022,
+  "source_documents": [
+    "fiu_ind_str_trend_analysis.pdf"
+  ],
+  "category": "AML - structuring / smurfing to evade cash-transaction reporting thresholds",
+  "risk_signals": [
+    "Multiple cash deposits kept just below the mandatory reporting threshold",
+    "Deposits split across several branches, accounts, or consecutive days by one or related parties",
+    "Cash activity inconsistent with the customer's stated profile or business"
+  ],
+  "analyst_reasoning": "Structuring breaks a large sum into many sub-threshold transactions specifically to stay under Cash Transaction Report limits. No single deposit looks reportable, so the fraud only reveals itself in the aggregate pattern across accounts, branches, and time.",
+  "investigation_steps": [
+    "Aggregate deposits by customer and connected parties across accounts, branches, and dates",
+    "Test proximity of amounts to the reporting threshold and the regularity of splitting",
+    "Compare cash volumes against the declared income or business turnover"
+  ],
+  "decision": "File a Suspicious Transaction Report, place the customer under enhanced monitoring, and review linked accounts for a smurfing network.",
+  "outcome": "Structured funds enter the system layered and hard to trace; detection depends on aggregation logic rather than single-transaction rules.",
+  "lessons_learned": [
+    "Sub-threshold deposits are only visible as fraud in aggregate, so monitoring must aggregate across accounts and time",
+    "Amounts clustering just under the reporting limit are a hallmark of structuring",
+    "Cash inconsistent with customer profile is the anchoring red flag"
+  ]
+}

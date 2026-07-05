@@ -1,0 +1,27 @@
+{
+  "case_id": "trade_based_money_laundering",
+  "institution": "Sector-wide typology - trade finance",
+  "year": 2020,
+  "source_documents": [
+    "https://www.fatf-gafi.org (Trade-Based Money Laundering - Trends & Developments 2020; Risk Indicators 2021)"
+  ],
+  "category": "AML - trade-based money laundering via mis-invoicing and phantom trade",
+  "risk_signals": [
+    "Invoice price or quantity materially misaligned with market or shipping documents",
+    "Goods described that do not match the trader's business or make no commercial sense",
+    "Multiple invoicing of the same goods, or circular/carousel trade between related parties"
+  ],
+  "analyst_reasoning": "Trade-based laundering moves value by misrepresenting trade: over- or under-invoicing shifts value across borders under cover of legitimate commerce, and phantom or multiple-invoiced shipments move money with no real goods. The tells are mismatches between invoices, shipping documents, and market prices.",
+  "investigation_steps": [
+    "Reconcile invoice value and quantity against shipping documents and prevailing market prices",
+    "Check whether the traded goods fit the customer's declared business",
+    "Detect multiple invoicing, circular trade, and related-party carousel patterns"
+  ],
+  "decision": "File an STR, hold the trade-finance facility for document verification, and escalate for enhanced trade due diligence.",
+  "outcome": "TBML hides in legitimate-looking trade volume; document-vs-market reconciliation is the primary detection method.",
+  "lessons_learned": [
+    "Price/quantity mismatches against market and shipping docs are the core TBML indicators",
+    "Goods inconsistent with the trader's business signal phantom or cover trade",
+    "Multiple invoicing and carousel trade are classic value-transfer mechanisms"
+  ]
+}

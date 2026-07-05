@@ -1,0 +1,27 @@
+{
+  "case_id": "fake_vendor_invoice_fraud",
+  "institution": "Sector-wide typology - corporate / occupational fraud",
+  "year": 2024,
+  "source_documents": [
+    "acfe_report_to_the_nations_2024.pdf"
+  ],
+  "category": "Occupational fraud - fictitious/inflated vendor billing scheme",
+  "risk_signals": [
+    "Payments to a vendor with no verifiable existence, premises, or tax footprint",
+    "Invoices sized just under an approver's authority limit, or duplicate invoice numbers",
+    "Vendor bank account linked to, or controlled by, an employee"
+  ],
+  "analyst_reasoning": "In a billing scheme an insider sets up or colludes with a shell vendor and approves fictitious or inflated invoices for payment. As ACFE occupational-fraud data shows, billing schemes are among the most common and costly asset-misappropriation frauds; the tells are vendor non-existence and invoices engineered to slip under approval limits.",
+  "investigation_steps": [
+    "Validate vendor existence: registration, premises, tax IDs, and independent references",
+    "Compare vendor bank details against employee records for overlaps",
+    "Analyse invoices for just-under-limit sizing, duplicates, and round amounts"
+  ],
+  "decision": "Suspend payments to the vendor, run vendor-master and three-way-match controls, and pursue disciplinary/legal action on confirmed collusion.",
+  "outcome": "Billing schemes bleed funds steadily until vendor-master controls catch them; three-way matching is the primary defence.",
+  "lessons_learned": [
+    "Vendor non-existence plus an employee-linked bank account is the core billing-scheme signal",
+    "Invoices engineered just under approval limits indicate insider knowledge",
+    "Vendor-master governance and three-way match are the structural controls"
+  ]
+}

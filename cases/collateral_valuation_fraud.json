@@ -1,0 +1,27 @@
+{
+  "case_id": "collateral_valuation_fraud",
+  "institution": "Sector-wide typology - credit / lending",
+  "year": 2022,
+  "source_documents": [
+    "https://www.rbi.org.in (Master Directions on Frauds - Classification & Reporting, incl. Early Warning Signals)"
+  ],
+  "category": "Credit fraud - inflated, forged, or non-existent collateral",
+  "risk_signals": [
+    "Collateral valued well above independent market benchmarks",
+    "A collusive or related-party valuer repeatedly used for the same borrower",
+    "Collateral that is re-pledged elsewhere, encumbered, or does not physically exist"
+  ],
+  "analyst_reasoning": "Inflating collateral value lets a borrower draw more credit than the security can cover, so the lender is under-secured from day one. The fraud lives in the valuation and title chain: a captive valuer, an above-market figure, or re-pledged/phantom assets that unravel only at enforcement.",
+  "investigation_steps": [
+    "Obtain an independent valuation and compare against the sanction valuation and market data",
+    "Check the valuer's independence and whether the same valuer recurs across the borrower's files",
+    "Verify title, existence, and prior charges/encumbrances on the collateral"
+  ],
+  "decision": "Re-margin or recall the facility, file a fraud report, and blacklist a colluding valuer.",
+  "outcome": "Over-valued or phantom collateral produces large loss-given-default at enforcement; independent valuation is the key control.",
+  "lessons_learned": [
+    "Valuation well above market plus a captive valuer is the core collateral-fraud signal",
+    "Title and encumbrance verification catches re-pledged or non-existent security",
+    "Valuer independence is a control, not a formality"
+  ]
+}
