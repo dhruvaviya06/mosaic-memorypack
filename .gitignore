@@ -18,3 +18,6 @@ pack/*.html
 .DS_Store
 .idea/
 .vscode/
+
+# --- Built pack artifacts (regenerable via export_pack.py) ---
+pack/*.mempack

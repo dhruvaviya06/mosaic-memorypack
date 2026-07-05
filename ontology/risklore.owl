@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+  RiskLore ontology — the shared vocabulary a pack is organized around.
+  Deliberately small (7 classes / 6 relations) so it stays legible and portable.
+  Classes describe WHAT things are; object properties describe HOW they relate.
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://memory-mesh.org/risklore"
+         xmlns="http://memory-mesh.org/risklore#">
+
+  <owl:Ontology rdf:about="http://memory-mesh.org/risklore">
+    <rdfs:comment>RiskLore: the causal anatomy of historical financial failures.</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- ===== Classes (7) ===== -->
+  <owl:Class rdf:about="#FinancialFailure"><rdfs:label>Financial Failure</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#Institution"><rdfs:label>Institution</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#RiskFactor"><rdfs:label>Risk Factor</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#WarningSign"><rdfs:label>Warning Sign</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#Heuristic"><rdfs:label>Heuristic</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#Instrument"><rdfs:label>Instrument</rdfs:label></owl:Class>
+  <owl:Class rdf:about="#RegulatoryAction"><rdfs:label>Regulatory Action</rdfs:label></owl:Class>
+
+  <!-- ===== Object properties / relations (6) ===== -->
+  <owl:ObjectProperty rdf:about="#caused_by">
+    <rdfs:domain rdf:resource="#FinancialFailure"/>
+    <rdfs:range rdf:resource="#RiskFactor"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#preceded_by">
+    <rdfs:domain rdf:resource="#FinancialFailure"/>
+    <rdfs:range rdf:resource="#WarningSign"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#exhibited">
+    <rdfs:domain rdf:resource="#Institution"/>
+    <rdfs:range rdf:resource="#WarningSign"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#involved_instrument">
+    <rdfs:domain rdf:resource="#FinancialFailure"/>
+    <rdfs:range rdf:resource="#Instrument"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#produces_heuristic">
+    <rdfs:domain rdf:resource="#RiskFactor"/>
+    <rdfs:range rdf:resource="#Heuristic"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#mitigated_by">
+    <rdfs:domain rdf:resource="#RiskFactor"/>
+    <rdfs:range rdf:resource="#RegulatoryAction"/>
+  </owl:ObjectProperty>
+
+</rdf:RDF>
