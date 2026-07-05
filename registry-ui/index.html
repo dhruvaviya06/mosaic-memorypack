@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Memory Mesh — Registry</title>
+<title>Financial Memorlyst — Registry</title>
 <style>
   :root{
     --bg:#0b0f1a; --panel:#141a2b; --panel2:#1b2338; --line:#26304d;
-    --ink:#e8ecf6; --muted:#93a0bd; --accent:#5b8cff; --green:#37d39b; --amber:#f5b74e;
+    --ink:#e8ecf6; --muted:#93a0bd; --accent:#5b8cff; --green:#37d39b;
     --chip:#20294180;
   }
   *{box-sizing:border-box}
@@ -18,104 +18,62 @@
   .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#8a5bff);
         display:grid;place-items:center;font-weight:800;color:#fff}
   h1{font-size:22px;margin:0}
-  .tag{color:var(--muted);font-size:13px;margin:2px 0 0}
-  .searchbar{margin:22px 0 26px;display:flex;gap:10px}
-  .searchbar input{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--ink);
-        padding:11px 14px;border-radius:11px;font-size:14px}
-  .sect{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin:26px 0 12px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .tag{color:var(--muted);font-size:13px;margin:2px 0 0;max-width:760px}
+  .sect{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin:30px 0 12px}
   .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
-        border-radius:16px;padding:18px;position:relative}
-  .card.feature{grid-column:1/-1;border-color:#2f6bff55;box-shadow:0 0 0 1px #2f6bff22,0 18px 50px -30px #2f6bff88}
+        border-radius:16px;padding:20px 20px 22px;position:relative}
+  .card.feature{border-color:#2f6bff55;box-shadow:0 0 0 1px #2f6bff22,0 18px 50px -30px #2f6bff88}
   .row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-  .name{font-size:18px;font-weight:700;margin:0}
-  .by{color:var(--muted);font-size:12.5px;margin:3px 0 0}
+  .name{font-size:19px;font-weight:700;margin:0}
   .badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
         padding:5px 10px;border-radius:999px;background:#0f2a20;color:var(--green);border:1px solid #1e5c46}
   .badge.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
-  .desc{color:#c7d0e6;font-size:13.5px;margin:12px 0 14px}
-  .stats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+  .desc{color:#c7d0e6;font-size:14px;margin:14px 0 16px;max-width:820px}
+  .stats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
   .chip{background:var(--chip);border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:12px}
   .chip b{color:#fff}
   .k{color:var(--muted)}
   .install{display:flex;align-items:center;gap:10px;background:#0a0e19;border:1px solid var(--line);
-        border-radius:10px;padding:10px 12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+        border-radius:10px;padding:11px 13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
   .install .pfx{color:var(--green)}
-  .hash{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);word-break:break-all}
-  .stub{opacity:.62}
-  .stub .badge{background:#2a2410;color:var(--amber);border-color:#5c4a1e}
-  .soon{font-size:11px;color:var(--amber);border:1px solid #5c4a1e;border-radius:999px;padding:4px 9px}
-  footer{color:var(--muted);font-size:12px;margin-top:34px;text-align:center}
+  .hash{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);word-break:break-all;margin:12px 0 0}
+  footer{color:var(--muted);font-size:12px;margin-top:36px;text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="brand">
-      <div class="logo">M</div>
+      <div class="logo">F</div>
       <div>
-        <h1>Memory Mesh</h1>
-        <p class="tag">A marketplace for verified experience — trade analyst expertise, not customer data.</p>
+        <h1>Financial Memorlyst</h1>
+        <p class="tag">Portable memory for financial risk analysis — equip your AI agent with a
+          veteran analyst's precedent and a full evidence trail to primary sources, not raw customer data.</p>
       </div>
-    </div>
-    <div class="searchbar">
-      <input placeholder="Search packs — e.g. risk, fraud, AML, credit…" />
     </div>
   </header>
 
-  <div class="sect">Featured pack</div>
-  <div class="grid">
-    <div class="card feature">
-      <div class="row">
-        <div>
-          <p class="name">RiskLore <span class="k" style="font-weight:500">v0.1.0</span></p>
-          <p class="by">by dhruvaviya06 · platform <b>memory-mesh</b></p>
-        </div>
-        <span class="badge dot">Verified · primary-source</span>
-      </div>
-      <p class="desc">The causal anatomy of financial failures and fraud typologies — distilled from
-        free regulatory and judicial primary sources. Import it and your existing agent gains citable
-        precedent with an evidence trail, from day one.</p>
-      <div class="stats">
-        <span class="chip"><span class="k">cases</span> <b>36</b> (6 deep + 30 typologies)</span>
-        <span class="chip"><span class="k">graph</span> <b>84</b> nodes · <b>151</b> edges</span>
-        <span class="chip"><span class="k">provenance</span> <b>100%</b> regulatory/judicial (deep tier)</span>
-        <span class="chip"><span class="k">embeddings</span> <b>none</b> — re-embedded locally</span>
-        <span class="chip"><span class="k">license</span> <b>single-tenant, no re-export</b></span>
-        <span class="chip"><span class="k">tier</span> <b>ai-extracted primary-source</b></span>
-      </div>
-      <div class="install"><span class="pfx">$</span> mesh install risklore@0.1.0</div>
-      <p class="hash">sha256 · 9b7417739a3c1eeaa98a6ff9dd9f159528039c32d175c09f3f5bb2456a57c36d</p>
+  <div class="sect">Verified pack</div>
+  <div class="card feature">
+    <div class="row">
+      <div><p class="name">RiskLore <span class="k" style="font-weight:500">v0.1.0</span></p></div>
+      <span class="badge dot">Verified · primary-source</span>
     </div>
+    <p class="desc">The causal anatomy of financial failures and fraud typologies — distilled from
+      free regulatory and judicial primary sources. Import it and your existing risk-analysis agent
+      gains citable precedent with an evidence trail, from day one.</p>
+    <div class="stats">
+      <span class="chip"><span class="k">cases</span> <b>36</b> (6 deep + 30 typologies)</span>
+      <span class="chip"><span class="k">graph</span> <b>84</b> nodes · <b>151</b> edges</span>
+      <span class="chip"><span class="k">provenance</span> <b>100%</b> regulatory/judicial (deep tier)</span>
+      <span class="chip"><span class="k">embeddings</span> <b>none</b> — re-embedded locally</span>
+      <span class="chip"><span class="k">license</span> <b>single-tenant, no re-export</b></span>
+    </div>
+    <div class="install"><span class="pfx">$</span> mesh install risklore@0.1.0</div>
+    <p class="hash">sha256 · 9b7417739a3c1eeaa98a6ff9dd9f159528039c32d175c09f3f5bb2456a57c36d</p>
   </div>
 
-  <div class="sect">More packs</div>
-  <div class="grid">
-    <div class="card stub">
-      <div class="row"><p class="name">MedLore</p><span class="soon">coming soon</span></div>
-      <p class="by">clinical triage & adverse-event precedent</p>
-      <p class="desc">How experienced clinicians reason through ambiguous presentations — shared as
-        portable memory, never patient data.</p>
-      <span class="badge">pending verification</span>
-    </div>
-    <div class="card stub">
-      <div class="row"><p class="name">ClaimSense</p><span class="soon">coming soon</span></div>
-      <p class="by">insurance fraud & claims investigation</p>
-      <p class="desc">Investigator workflows for suspicious claims — red flags, escalation paths,
-        and outcomes.</p>
-      <span class="badge">pending verification</span>
-    </div>
-    <div class="card stub">
-      <div class="row"><p class="name">SupplyGuard</p><span class="soon">coming soon</span></div>
-      <p class="by">supply-chain & vendor risk</p>
-      <p class="desc">Precedent on concentration, counterparty failure, and disruption cascades across
-        supplier networks.</p>
-      <span class="badge">pending verification</span>
-    </div>
-  </div>
-
-  <footer>Memory Mesh — App Store (registry) + device driver (Node) + first app (RiskLore).
-    Demo stub · WeMakeDevs × Cognee.</footer>
+  <footer>Financial Memorlyst — self-hosted memory packs for financial risk analysis · WeMakeDevs × Cognee.</footer>
 </div>
 </body>
 </html>
