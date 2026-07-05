@@ -1,0 +1,25 @@
+{
+  "case_id": "fakebank_2020",
+  "institution": "FakeBank plc",
+  "year": 2020,
+  "source_documents": ["fakebank_regulator_report_2020.pdf"],
+  "category": "Liquidity crisis from concentrated wholesale funding",
+  "risk_signals": [
+    "Over 60% of funding came from short-term wholesale markets",
+    "Loan book grew faster than deposits for eight consecutive quarters",
+    "Single-name exposure exceeded 25% of Tier 1 capital"
+  ],
+  "analyst_reasoning": "A bank that funds long-dated loans with short-term wholesale money is exposed to a sudden loss of market confidence. When growth is this fast, underwriting standards usually slip, so the funding mismatch and the concentration compound each other rather than adding up linearly.",
+  "investigation_steps": [
+    "Reconstruct the funding maturity ladder to size the roll-over cliff",
+    "Stress the largest single-name exposures against a 30% collateral haircut",
+    "Compare the loan-loss provisioning trend against peer banks"
+  ],
+  "decision": "The risk committee capped wholesale funding at 40% and froze single-name limits, but only after the regulator flagged the mismatch.",
+  "outcome": "A brief market panic triggered a funding run. The bank survived only after an emergency central-bank liquidity line, and its share price fell roughly 70%.",
+  "lessons_learned": [
+    "Funding concentration is a liquidity risk even when the underlying assets are sound",
+    "Rapid asset growth is itself a warning sign, not a success metric",
+    "Concentration limits imposed only after a regulator flags them arrive too late"
+  ]
+}
