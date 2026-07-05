@@ -57,6 +57,9 @@ async def main() -> int:
         print("No graph found — run src/build_memory.py first.")
         return 1
 
+    # NOTE ordering: we import into a fresh dataset and verify it BEFORE forgetting the
+    # original. That way a mid-import failure can never destroy the only copy, and it
+    # matches the live demo — the forget() "reversibility beat" comes last.
     print("STEP 1 — recall on the ORIGINAL pack")
     before = await recall_text(QUESTION, PACK_DATASET)
     print(f"  Q: {QUESTION}\n  A: {before}\n")
@@ -65,25 +68,25 @@ async def main() -> int:
     if await export() != 0:
         return 1
 
-    print("\nSTEP 3 — forget the ORIGINAL dataset (publisher uninstalls it)")
-    await cognee.forget(dataset=PACK_DATASET)
-    print(f"  forgot '{PACK_DATASET}'")
-
-    print("\nSTEP 4 — import into a FRESH dataset (a second Node re-embeds locally)")
+    print("\nSTEP 3 — import into a FRESH dataset (a second Node re-embeds locally)")
     await import_pack(PACK_FILE, IMPORTED_DATASET)
 
-    print("\nSTEP 5 — recall the SAME question on the freshly imported pack")
+    print("\nSTEP 4 — recall the SAME question on the freshly imported pack")
     after = await recall_text(QUESTION, IMPORTED_DATASET)
     print(f"  Q: {QUESTION}\n  A: {after}\n")
 
     kb, ka = keywords(before), keywords(after)
     overlap = len(kb & ka) / max(1, len(kb))
     passed = bool(after) and overlap >= 0.30
-    print("=" * 64)
     print(f"Answer-survival overlap: {overlap:.0%} of key terms carried across")
     print("ROUND-TRIP PASSED — the pack crossed instances with its knowledge intact."
           if passed else
           "ROUND-TRIP WEAK — answers diverged; inspect the reconstruction.")
+
+    print("\nSTEP 5 — forget the ORIGINAL dataset (the 5-second reversibility beat)")
+    await cognee.forget(dataset=PACK_DATASET)
+    print(f"  forgot '{PACK_DATASET}' — uninstall complete")
+    print("=" * 64)
     return 0 if passed else 1
 
 

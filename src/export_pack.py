@@ -29,6 +29,7 @@ from cognee.infrastructure.databases.graph import get_graph_engine
 from config import (
     CASES_DIR, ONTOLOGY_FILE, PACK_DIR, PACK_FILE, PACK_FILENAME,
     PLATFORM, PACK_NAME, PACK_VERSION, PACK_LABEL, PUBLISHER, LICENSE, VERIFICATION_TIER,
+    DUMMY_CASE_IDS,
 )
 
 # Cognee-internal node types that are plumbing, not curated knowledge.
@@ -66,6 +67,8 @@ def build_provenance() -> dict:
     prov = {}
     for path in sorted(CASES_DIR.glob("*.json")):
         d = json.loads(path.read_text())
+        if d["case_id"] in DUMMY_CASE_IDS:
+            continue  # the dummy is never part of a real pack's provenance
         prov[d["case_id"]] = {
             "institution": d["institution"],
             "year": d["year"],
