@@ -13,10 +13,16 @@ PLATFORM = "memory-mesh"      # the marketplace this pack belongs to
 PACK_NAME = "risklore"        # this pack's name
 PACK_VERSION = "0.1.0"        # dummy-data version; bumped to 1.0.0 in Phase 6
 
+# Human-facing pack label — used in the manifest, registry UI, and demo narration.
+PACK_LABEL = f"{PACK_NAME}@{PACK_VERSION}"      # e.g. "risklore@0.1.0"
+
 # Locked design decision #7: the pack's DATASET boundary IS the pack boundary.
-# Import mounts into an isolated dataset named "{pack_name}@{version}", and
-# uninstall is a single forget() on that dataset — the 5-second reversibility beat.
-PACK_DATASET = f"{PACK_NAME}@{PACK_VERSION}"    # e.g. "risklore@0.1.0"
+# Import mounts into an isolated dataset, and uninstall is a single forget() on it —
+# the 5-second reversibility beat.
+# NOTE: cognee 1.2.2 forbids '.' and ' ' in dataset names, so we can't use PACK_LABEL
+# ("risklore@0.1.0") directly. This is the cognee-safe internal name; the pretty label
+# above is what humans see.
+PACK_DATASET = f"{PACK_NAME}_{PACK_VERSION.replace('.', '_')}"   # e.g. "risklore_0_1_0"
 
 # --- Repo directory layout ---------------------------------------------------
 # Resolved relative to this file, so scripts work no matter where they're run from.

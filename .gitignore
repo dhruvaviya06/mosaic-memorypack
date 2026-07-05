@@ -11,6 +11,9 @@ __pycache__/
 .cognee*
 *.lancedb
 
+# --- Debug graph visualizations (regenerable from the graph) ---
+pack/*.html
+
 # --- OS / editor cruft ---
 .DS_Store
 .idea/
