@@ -1,0 +1,29 @@
+{
+  "case_id": "svb_2023",
+  "institution": "Silicon Valley Bank",
+  "year": 2023,
+  "source_documents": ["svb_fed_barr_report_2023.pdf"],
+  "category": "Bank failure from unmanaged interest-rate and liquidity risk, amplified by deposit concentration and a social-media-accelerated run",
+  "risk_signals": [
+    "Highly concentrated depositor base dominated by uninsured deposits from the technology and venture-capital sector",
+    "Rapid growth in size and complexity that outpaced the bank's risk-management maturity and its transition to heightened supervisory standards",
+    "Large unrealized losses on long-duration held-to-maturity securities as interest rates rose, left unhedged",
+    "Basic interest-rate and liquidity risk left unmanaged by senior leadership, with the board failing to hold management accountable"
+  ],
+  "analyst_reasoning": "The bank funded long-duration securities with uninsured deposits from a single, tightly networked industry. When rising rates cut the market value of those securities, the underlying question became solvency, not just liquidity. A concentrated, highly networked depositor base can move as one, and social media plus instant digital withdrawals meant concern could turn into a full run within hours rather than days. Rapid growth had also outstripped the firm's controls, so the vulnerabilities compounded rather than adding up linearly.",
+  "investigation_steps": [
+    "Size unrealized losses on the held-to-maturity and available-for-sale securities portfolios against the current rate environment",
+    "Measure the share and concentration of uninsured deposits, and map how networked the depositor base is",
+    "Test whether risk-management capacity and governance kept pace with the bank's growth in size and complexity",
+    "Assess interest-rate risk hedging and the funding maturity profile for run vulnerability"
+  ],
+  "decision": "Federal Reserve supervisors identified vulnerabilities as the bank grew but did not act with sufficient force or urgency to ensure they were fixed quickly; the tailoring framework and a less-assertive supervisory stance reduced standards and slowed action. Bank management and the board failed to manage or oversee the underlying risks.",
+  "outcome": "SVB failed in March 2023. The proximate cause was a liquidity run, but the underlying issue was concern about solvency. The failure produced systemic contagion not contemplated by the tailoring framework, prompting a Federal Reserve self-assessment of its supervision and regulation.",
+  "lessons_learned": [
+    "Rapid growth is itself a risk factor that should intensify supervision, not a success metric",
+    "Deposit and business-model concentration is a liquidity risk even when assets look sound",
+    "A liquidity run can mask an underlying solvency problem, which is why strong capital matters",
+    "Social media and instant digital withdrawals have fundamentally increased the speed of bank runs",
+    "Identifying a vulnerability is not enough; supervisors and management must act with force and urgency to remediate it"
+  ]
+}

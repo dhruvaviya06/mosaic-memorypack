@@ -36,3 +36,16 @@ PACK_DIR = ROOT / "pack"                # built .mempack artifacts
 
 # The export filename target (Phase 4): risklore-0.1.0.mempack
 PACK_FILENAME = f"{PACK_NAME}-{PACK_VERSION}.mempack"
+PACK_FILE = PACK_DIR / PACK_FILENAME
+
+# --- Pack manifest metadata (pack.json) --------------------------------------
+PUBLISHER = "dhruvaviya06 (Memory Mesh)"
+LICENSE = "single-tenant, no re-export"
+# Verification tier: the deep cases are AI-extracted from real regulatory/judicial
+# primary sources, pending human verification (which would upgrade this to
+# "human-verified primary-source"). Not "dummy" anymore — real cases now exist.
+VERIFICATION_TIER = "ai-extracted primary-source"
+
+# On import, the pack mounts into a SEPARATE dataset, so we can prove the answer
+# survives a full export -> forget-original -> import round-trip.
+IMPORTED_DATASET = f"{PACK_DATASET}_imported"    # e.g. "risklore_0_1_0_imported"

@@ -1,0 +1,28 @@
+{
+  "case_id": "dhfl_2019",
+  "institution": "Dewan Housing Finance Corporation (DHFL)",
+  "year": 2019,
+  "source_documents": ["dhfl_nclt_ibbi_order_2019.pdf"],
+  "category": "Housing-finance NBFC failure from funding mismatch, governance breakdown, and alleged fund diversion, resolved under insolvency",
+  "risk_signals": [
+    "Long-term housing and project loans funded heavily by short-term wholesale borrowings, a classic asset-liability mismatch",
+    "Governance concerns at the board and management level flagged by the regulator",
+    "Defaults on payment obligations to lenders and bondholders",
+    "Allegations of diversion of funds to related and shell entities, inflating the apparent loan book"
+  ],
+  "analyst_reasoning": "Like other NBFCs caught in the post-IL&FS liquidity squeeze, DHFL depended on continuously rolling over short-term funding to carry long-dated housing loans; when wholesale funding dried up, it could not meet obligations. Weak governance allowed the problems to grow unchecked, and alleged diversion of funds meant the reported asset quality overstated what was actually recoverable. Governance failure and funding mismatch reinforced each other.",
+  "investigation_steps": [
+    "Reconstruct the funding maturity profile to size the short-term roll-over dependence against long-term assets",
+    "Scrutinise related-party and inter-corporate loans for evidence of diversion or round-tripping",
+    "Assess board and management governance, independence, and the quality of internal controls",
+    "Verify reported loan-book quality against independent forensic review rather than book values"
+  ],
+  "decision": "On 20 November 2019 the Reserve Bank of India superseded DHFL's board under Section 45-IE of the RBI Act, citing governance concerns and payment defaults, appointed an administrator, constituted an advisory committee, and initiated a corporate insolvency resolution process under the Insolvency and Bankruptcy Code.",
+  "outcome": "DHFL became the first large NBFC/HFC taken into insolvency resolution; the process surfaced further evidence of fund diversion and led to a resolution/takeover of the company, with substantial haircuts for creditors.",
+  "lessons_learned": [
+    "A housing-finance lender is only as sound as its funding stability; short-term reliance against long-term loans is fragile",
+    "Weak governance lets funding and asset-quality problems compound before they surface",
+    "Reported loan-book quality must be tested forensically, because diversion can inflate apparent assets",
+    "Related-party and inter-corporate exposures are prime channels for hidden risk and must be scrutinised"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "case_id": "yesbank_2020",
+  "institution": "Yes Bank",
+  "year": 2020,
+  "source_documents": ["yesbank_rbi_reconstruction_scheme_2020.pdf", "yesbank_rbi_press_release_2020.htm"],
+  "category": "Private-bank failure from aggressive lending, weak capital, and a deposit run, resolved by regulator-led reconstruction",
+  "risk_signals": [
+    "Rapidly deteriorating position on liquidity, capital, and other critical parameters",
+    "Aggressive credit growth into stressed corporate borrowers, with asset quality weakening and under-provisioning",
+    "Repeated inability to raise the capital needed to absorb mounting bad loans, with no credible plan for capital infusion",
+    "Erosion of depositor confidence leading to accelerating withdrawals"
+  ],
+  "analyst_reasoning": "A bank that grows its loan book aggressively into stressed sectors while under-provisioning is quietly eroding its own capital; the losses are already there, only unrecognised. Once the market doubts solvency and no credible capital raise materialises, depositors move, and a capital problem becomes an immediate liquidity crisis. At that point only an outside intervention can restore confidence.",
+  "investigation_steps": [
+    "Test asset quality and provisioning against the true stress in the loan book rather than reported figures",
+    "Assess the realism and timeline of any announced capital-raising plan",
+    "Monitor deposit trends and concentration for early signs of a confidence run",
+    "Evaluate whether capital buffers can absorb a realistic recognition of bad loans"
+  ],
+  "decision": "With the bank's financial position deteriorating and no credible plan for capital infusion, the Reserve Bank of India placed Yes Bank under a moratorium on 5 March 2020 and framed a Reconstruction Scheme under section 45 of the Banking Regulation Act, with State Bank of India leading an investment to recapitalise the bank.",
+  "outcome": "Yes Bank was placed under moratorium with temporary withdrawal limits and then reconstructed under RBI's scheme, with SBI and other institutions injecting capital and the board reconstituted, averting an outright collapse while depositors were protected.",
+  "lessons_learned": [
+    "Under-provisioning does not remove losses, it only delays their recognition and erodes capital silently",
+    "Aggressive growth into stressed borrowers is a warning sign, not a strength",
+    "A capital shortfall the market stops believing will be filled turns into a liquidity run",
+    "Depositor protection can require decisive regulator-led reconstruction once private solutions fail"
+  ]
+}

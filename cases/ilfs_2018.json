@@ -1,0 +1,28 @@
+{
+  "case_id": "ilfs_2018",
+  "institution": "Infrastructure Leasing & Financial Services (IL&FS)",
+  "year": 2018,
+  "source_documents": ["ilfs_rbi_fsr_june2019.pdf"],
+  "category": "NBFC collapse from asset-liability mismatch and an opaque group structure, triggering system-wide contagion",
+  "risk_signals": [
+    "Long-gestation infrastructure assets funded largely with short-term borrowings, creating a severe asset-liability maturity mismatch",
+    "A sprawling group of subsidiaries and special-purpose vehicles that obscured the true consolidated leverage",
+    "High leverage sustained by continual roll-over of short-term debt in the commercial-paper market",
+    "Strong external credit ratings that masked the underlying fragility until defaults began"
+  ],
+  "analyst_reasoning": "Funding decades-long infrastructure projects with short-term paper works only as long as the paper can always be rolled over. An opaque web of subsidiaries hid how much leverage sat across the group, so lenders and rating agencies underpriced the risk. Because NBFCs are deeply interconnected with banks and mutual funds through the commercial-paper and debt markets, the failure of a large one transmits stress outward — as the RBI's Financial Stability Report warned that the failure of the largest NBFCs could cause losses comparable to a big bank.",
+  "investigation_steps": [
+    "Build the consolidated funding maturity ladder across all group entities to size the roll-over cliff",
+    "Consolidate leverage across every subsidiary and SPV rather than trusting entity-level figures",
+    "Map interconnections to banks, mutual funds, and the commercial-paper market to gauge contagion channels",
+    "Stress-test the group against a loss of access to short-term wholesale funding"
+  ],
+  "decision": "After IL&FS group entities began defaulting on their obligations in 2018, the government superseded its board and the matter moved into insolvency resolution; the RBI subsequently tracked the resulting NBFC-sector stress and contagion in its Financial Stability Reports.",
+  "outcome": "The IL&FS defaults froze confidence in the commercial-paper market, pressured mutual funds facing redemptions, and squeezed other NBFCs reliant on short-term wholesale funding — a system-wide contagion that validated the RBI's network model of NBFC interconnectedness.",
+  "lessons_learned": [
+    "Funding long-term assets with short-term liabilities is a liquidity trap regardless of asset quality",
+    "Opaque group structures hide leverage; consolidation across all entities is essential to see the real risk",
+    "NBFCs are systemically interconnected, so a single large failure can transmit contagion to banks and mutual funds",
+    "Credit ratings can lag reality, so they are not a substitute for independent liquidity and leverage analysis"
+  ]
+}

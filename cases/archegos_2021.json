@@ -1,0 +1,29 @@
+{
+  "case_id": "archegos_2021",
+  "institution": "Credit Suisse / Archegos Capital Management",
+  "year": 2021,
+  "source_documents": ["archegos_cs_paulweiss_2021_sec.htm"],
+  "category": "Prime-broker counterparty blow-up: a family office builds concentrated, leveraged, under-margined swap positions that a bank fails to control",
+  "risk_signals": [
+    "Large, persistent risk-limit breaches on the Archegos account that were repeatedly noted but not remediated",
+    "Concentrated, volatile, and severely under-margined total-return-swap positions with heavy single-name exposure (notably ViacomCBS)",
+    "A long-biased, highly leveraged portfolio built across multiple prime brokers, so no single broker saw the full picture",
+    "Static, low margin rates that were never moved to dynamic margining despite the portfolio's growing risk"
+  ],
+  "analyst_reasoning": "Total return swaps let Archegos build large synthetic, leveraged, concentrated exposure while the bank held only thin static margin against it, leaving Credit Suisse badly under-collateralized. Concentration and leverage compounded: when a few single-name positions fell, the portfolio's value dropped fast enough to blow through the inadequate margin. The risk was not hidden from CS's systems — it was identified and conspicuous — but a Prime Services business focused on short-term profit, plus a risk function unwilling to challenge or escalate, meant the warnings were systematically ignored.",
+  "investigation_steps": [
+    "Size counterparty concentration and effective leverage, including single-name exposure within the swap book",
+    "Review the margining methodology and test whether static margin adequately covers a volatile, concentrated portfolio (vs dynamic margining)",
+    "Track the history of risk-limit breaches and confirm whether breaches triggered enforcement and escalation",
+    "Aggregate exposure across products and desks to see the true picture a single account view would miss"
+  ],
+  "decision": "Credit Suisse repeatedly identified the Archegos risk (including at CPOC meetings in September 2020 and March 2021) but failed to reduce the exposure, enforce its own risk limits, or transition Archegos to dynamic margining, and failed to escalate beyond CPOC. Management and risk did not act with urgency despite having all the information needed.",
+  "outcome": "During the week of March 22, 2021 Archegos's concentrated positions collapsed and it defaulted on margin calls. Credit Suisse sustained roughly USD 5.5 billion in losses, and the Paul Weiss review found the losses stemmed from a fundamental failure of management and controls and a lackadaisical risk culture rather than fraud or missing systems.",
+  "lessons_learned": [
+    "Risk systems that correctly flag a danger are worthless if business and risk personnel ignore the signals",
+    "Concentration plus leverage delivered through total return swaps can compound into catastrophic, fast-moving losses",
+    "Static margin on a volatile, concentrated counterparty leaves a bank under-collateralized; margin must scale with risk",
+    "Persistent limit breaches demand enforcement and escalation, not repeated tolerance",
+    "A firm that fails to learn from its past risk failures is condemned to repeat them"
+  ]
+}

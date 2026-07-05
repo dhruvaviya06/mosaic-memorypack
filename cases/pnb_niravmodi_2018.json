@@ -1,0 +1,28 @@
+{
+  "case_id": "pnb_niravmodi_2018",
+  "institution": "Punjab National Bank / Nirav Modi",
+  "year": 2018,
+  "source_documents": ["pnb_niravmodi_ewhc_2022.pdf"],
+  "category": "Insider bank fraud: fraudulent trade-finance guarantees issued through the interbank messaging system while bypassing core banking controls",
+  "risk_signals": [
+    "Letters of Undertaking (guarantees) issued to firms linked to the perpetrator without sanctioned credit limits or collateral",
+    "Instructions sent over the SWIFT interbank messaging system that were never recorded in the bank's Core Banking System, so the exposure was invisible to normal monitoring",
+    "Concentration of authority in a small number of branch officials who both issued and controlled the reconciliation of the transactions",
+    "Repeated roll-overs of short-term overseas credit with no reconciliation between SWIFT messages and the bank's ledgers"
+  ],
+  "analyst_reasoning": "When the instrument that creates a liability (a SWIFT guarantee message) is disconnected from the ledger that records it (the Core Banking System), the bank can be on the hook for exposures it cannot see. A few colluding insiders were able to issue guarantees for years because no independent reconciliation tied SWIFT traffic back to sanctioned limits and collateral. The fraud only surfaced when the officials involved changed and the roll-over chain could no longer be sustained.",
+  "investigation_steps": [
+    "Reconcile every SWIFT message (especially guarantees and Letters of Undertaking) against entries in the Core Banking System",
+    "Confirm that each trade-finance facility has a sanctioned credit limit and collateral on record",
+    "Enforce separation of duties so the same officials cannot both issue instruments and reconcile them",
+    "Trace the beneficiaries of overseas credit and test for concentration around related parties"
+  ],
+  "decision": "The fraud was concealed for years and only detected in 2018 when new officials refused to roll over the facilities; India's CBI brought fraud proceedings and the Enforcement Directorate brought money-laundering proceedings, and the RBI subsequently discontinued the Letter of Undertaking instrument for trade finance.",
+  "outcome": "The fraud caused losses to Punjab National Bank equivalent to over GBP 700 million (roughly USD 2 billion). Nirav Modi fled India; a UK court found no bar to his extradition and the proceedings include fraud, laundering of the proceeds, and alleged interference with evidence and witnesses.",
+  "lessons_learned": [
+    "An instrument that creates a liability must be reconciled to the core ledger, or the bank carries exposures it cannot see",
+    "Separation of duties is a control, not a formality: the same person must not both create and reconcile obligations",
+    "Trade-finance guarantees need the same credit-limit and collateral discipline as any other lending",
+    "A fraud sustained by rolling over short-term credit collapses the moment the roll-over stops, so absence of losses is not absence of risk"
+  ]
+}
