@@ -27,8 +27,9 @@ from config import PACK_DATASET, IMPORTED_DATASET, PACK_FILE
 from export_pack import export
 from import_pack import import_pack
 
-# A question answerable from the pack's content (the dummy FakeBank liquidity-crisis case).
-QUESTION = "What risks led to the bank's liquidity crisis and how was it resolved?"
+# A question answerable from the real pack's content (naming a case so the default
+# entity-seeded retriever fires reliably before and after the round-trip).
+QUESTION = "What warning signs preceded the Archegos default, and how was it handled?"
 
 _STOP = set(
     "the a an and or of to in is was were that this it its as for with on by from at be are "

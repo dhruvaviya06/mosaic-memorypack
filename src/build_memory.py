@@ -18,7 +18,7 @@ import json
 import sys
 
 import cognee
-from config import CASES_DIR, SOURCES_DIR, PACK_DATASET
+from config import CASES_DIR, PACK_DATASET, DEEP_TIER_CASE_IDS, DUMMY_CASE_IDS
 from validate_cases import main as validate_cases
 
 
@@ -45,43 +45,56 @@ def case_to_text(data: dict) -> str:
     return "\n".join(lines)
 
 
-async def build() -> int:
+def select_cases(scope: str) -> list[dict]:
+    """Load case dicts for the requested scope, always excluding the dummy.
+
+    scope="deep" -> only the deep-tier cases (backed by a primary-source document).
+    scope="all"  -> every real case (deep + light typologies).
+    """
+    selected = []
+    for path in sorted(CASES_DIR.glob("*.json")):
+        data = json.loads(path.read_text())
+        cid = data.get("case_id")
+        if cid in DUMMY_CASE_IDS:
+            continue
+        if scope == "deep" and cid not in DEEP_TIER_CASE_IDS:
+            continue
+        selected.append(data)
+    return selected
+
+
+async def build(scope: str = "deep") -> int:
     # 1) Gate: never ingest cases that violate the contract.
     print("=== Validating cases before build ===")
     if validate_cases() != 0:
         print("\nValidation failed — aborting build.")
         return 1
 
-    # 2) Collect curated case texts (the expertise layer).
-    case_texts = []
-    for path in sorted(CASES_DIR.glob("*.json")):
-        case_texts.append(case_to_text(json.loads(path.read_text())))
-    if not case_texts:
-        print("No cases found — nothing to build.")
+    # 2) Collect the curated case texts for the chosen scope (the expertise layer).
+    cases = select_cases(scope)
+    if not cases:
+        print(f"No cases found for scope '{scope}' — nothing to build.")
         return 1
+    case_texts = [case_to_text(c) for c in cases]
+    ids = ", ".join(c["case_id"] for c in cases)
+    print(f"\n=== remember: ingesting {len(case_texts)} '{scope}' case(s) into "
+          f"'{PACK_DATASET}' ===\n  {ids}")
 
-    print(f"\n=== remember: ingesting {len(case_texts)} case(s) into '{PACK_DATASET}' ===")
-    # self_improvement=False: build the graph now, run enrichment as a separate step below.
+    # Two-tier rule: we ingest the CURATED CASE JSONs (which already distill the sources).
+    # We deliberately do NOT cognify the full source PDFs — that would burn free-tier quota
+    # on hundreds of pages. The evidence trail to source documents is preserved through
+    # provenance.json (built by export_pack from each case's source_documents).
     await cognee.remember(case_texts, dataset_name=PACK_DATASET, self_improvement=False)
 
-    # 3) Source PDFs (the evidence layer) — none during the dummy phase; wired for Phase 6.
-    pdfs = sorted(SOURCES_DIR.glob("*.pdf"))
-    if pdfs:
-        print(f"=== remember: ingesting {len(pdfs)} source PDF(s) ===")
-        with_handles = [open(p, "rb") for p in pdfs]
-        try:
-            await cognee.remember(with_handles, dataset_name=PACK_DATASET, self_improvement=False)
-        finally:
-            for fh in with_handles:
-                fh.close()
-
-    # 4) improve: enrich/consolidate the graph (the "improve" verb).
+    # 3) improve: enrich/consolidate the graph (the "improve" verb).
     print(f"=== improve: enriching '{PACK_DATASET}' ===")
     await cognee.improve(dataset=PACK_DATASET)
 
-    print("\n[done] RiskLore graph built. Run  src/inspect.py  to X-ray it.")
+    print("\n[done] RiskLore graph built. Run  src/inspect_graph.py  to X-ray it.")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(asyncio.run(build()))
+    # scope: "deep" (default, quota-safe) or "all"
+    scope = "all" if "--all" in sys.argv else "deep"
+    sys.exit(asyncio.run(build(scope)))

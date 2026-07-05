@@ -49,3 +49,13 @@ VERIFICATION_TIER = "ai-extracted primary-source"
 # On import, the pack mounts into a SEPARATE dataset, so we can prove the answer
 # survives a full export -> forget-original -> import round-trip.
 IMPORTED_DATASET = f"{PACK_DATASET}_imported"    # e.g. "risklore_0_1_0_imported"
+
+# --- Case tiers (two-tier ingestion rule) ------------------------------------
+# Deep-tier cases are backed by a downloaded primary-source document and give the
+# strongest evidence-trail / multi-hop demo; they are built first (quota-safe).
+DEEP_TIER_CASE_IDS = {
+    "archegos_2021", "svb_2023", "pnb_niravmodi_2018",
+    "yesbank_2020", "ilfs_2018", "dhfl_2019",
+}
+# The dummy case is never part of a real pack build.
+DUMMY_CASE_IDS = {"fakebank_2020"}

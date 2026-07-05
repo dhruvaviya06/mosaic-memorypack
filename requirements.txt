@@ -3,3 +3,4 @@
 # Recreate the env with:  python -m venv .venv && .venv/bin/pip install -r requirements.txt
 cognee==1.2.2
 python-dotenv==1.0.1
+fastembed==0.8.0    # local embeddings (no API/quota) — the "re-embeds locally" path
