@@ -1,0 +1,17 @@
+# --- Secrets: never commit real keys ---
+.env
+
+# --- Python virtual environment (thousands of library files, rebuildable) ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Cognee local state (databases, logs, caches) ---
+.cognee*
+*.lancedb
+
+# --- OS / editor cruft ---
+.DS_Store
+.idea/
+.vscode/
