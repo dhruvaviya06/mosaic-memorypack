@@ -1,0 +1,34 @@
+{
+  "case_id": "lehman_2008",
+  "institution": "Lehman Brothers",
+  "year": 2008,
+  "source_documents": [
+    "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf",
+    "https://jenner.com/lehman"
+  ],
+  "category": "Investment-bank failure: excessive leverage and illiquid real-estate assets funded by short-term repo, with 'Repo 105' accounting used to mask leverage at reporting dates",
+  "risk_signals": [
+    "Very high leverage, around 30x, against a balance sheet heavy in illiquid assets",
+    "Large concentration in commercial real estate and subprime-related mortgage assets that were hard to value and sell",
+    "Heavy dependence on short-term repo funding that could be withdrawn at the first loss of confidence",
+    "Use of 'Repo 105' transactions to move roughly USD 50 billion off the balance sheet at quarter-end to flatter leverage ratios",
+    "Resistance to marking down deteriorating assets, and eroding counterparty and market confidence"
+  ],
+  "analyst_reasoning": "Lehman financed long-dated, illiquid assets with short-term repo, which is a classic run structure: when confidence fell, lenders pulled funding faster than the assets could be sold. Repo 105 let Lehman treat repo financings as sales and temporarily remove assets from the balance sheet at reporting dates, understating leverage to investors and rating agencies. Because the real leverage and the asset-liability mismatch were worse than reported, the loss of confidence became self-reinforcing and the funding disappeared.",
+  "investigation_steps": [
+    "Reconstruct true period-end leverage by reversing window-dressing transactions such as Repo 105 and comparing intra-quarter to quarter-end balances",
+    "Size the maturity mismatch between illiquid assets and the short-term repo funding rolling them",
+    "Independently mark the illiquid real-estate positions and test for over-optimistic valuations",
+    "Map repo counterparty concentration and the run-risk if the largest lenders step away",
+    "Examine the accounting characterization (sale versus financing) and the legal opinions relied on to support it"
+  ],
+  "decision": "No rescue or buyer was arranged in time; Lehman filed for Chapter 11 bankruptcy on 15 September 2008 — the largest in United States history.",
+  "outcome": "Lehman's failure triggered a global financial panic and froze funding markets. The Valukas examiner's report later detailed the Repo 105 scheme and described Lehman's 'materially misleading' balance-sheet management, while the FCIC documented the underlying leverage and funding fragility.",
+  "lessons_learned": [
+    "Funding long-term, illiquid assets with short-term repo creates acute run risk",
+    "Accounting that moves assets off the balance sheet at reporting dates masks real leverage — analysts must look at intra-period figures",
+    "Illiquid assets carried at optimistic marks overstate capital and understate risk",
+    "Confidence-sensitive funding can evaporate far faster than assets can be sold",
+    "Reported leverage ratios can be gamed and need independent reconstruction"
+  ]
+}

@@ -37,9 +37,25 @@ SOURCE_META = {
     "dhfl_nclt_ibbi_order_2019.pdf": {
         "label": "NCLT / IBBI — DHFL administrator order (2019)",
         "url": "https://ibbi.gov.in/uploads/order/4dc4028ccc12768a83b5726399fc8698.pdf"},
+    # --- Light historical cases (name-brand precedents, URL-referenced sources) ---
+    "https://home.treasury.gov/system/files/236/hedgfund.pdf": {
+        "label": "President's Working Group — Hedge Funds, Leverage, and the Lessons of LTCM (1999)",
+        "url": "https://home.treasury.gov/system/files/236/hedgfund.pdf"},
+    "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf": {
+        "label": "FCIC — The Financial Crisis Inquiry Report (2011)",
+        "url": "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf"},
+    "https://jenner.com/lehman": {
+        "label": "Valukas — Lehman Brothers Examiner's Report (2010), Repo 105",
+        "url": "https://jenner.com/lehman"},
+    "https://www.ft.com/wirecard": {
+        "label": "Financial Times — Wirecard investigation archive (press tier)",
+        "url": "https://www.ft.com/wirecard"},
+    "Report of the Board of Banking Supervision Inquiry into the Circumstances of the Collapse of Barings (HMSO, HC 673, 1995)": {
+        "label": "Board of Banking Supervision — Inquiry into the Collapse of Barings (HMSO, 1995)",
+        "url": None},
 }
 
-# distinctive keywords per deep case, for matching which case an answer cites
+# distinctive keywords per cited case, for matching which case an answer cites
 CASE_KEYWORDS = {
     "archegos_2021": ["archegos"],
     "svb_2023": ["silicon valley bank", "svb"],
@@ -47,6 +63,11 @@ CASE_KEYWORDS = {
     "yesbank_2020": ["yes bank"],
     "ilfs_2018": ["il&fs", "ilfs", "infrastructure leasing"],
     "dhfl_2019": ["dhfl", "dewan housing"],
+    # light historical cases
+    "ltcm_1998": ["ltcm", "long-term capital", "long term capital"],
+    "barings_1995": ["barings", "nick leeson", "leeson"],
+    "lehman_2008": ["lehman", "repo 105"],
+    "wirecard_2020": ["wirecard", "marsalek"],
 }
 
 _PROV_CACHE = None
@@ -74,10 +95,14 @@ def citations_for(answer: str) -> list[dict]:
             p = prov.get(case_id, {})
             sources = []
             for name in p.get("source_documents", []):
+                if isinstance(name, str) and name.startswith("pending"):
+                    continue  # placeholder ref, not yet a citable source
                 meta = SOURCE_META.get(name, {})
+                # URL-referenced light-tier sources are clickable even without a meta entry.
+                url = meta.get("url") or (name if str(name).startswith("http") else None)
                 sources.append({"name": name,
                                 "label": meta.get("label", name),
-                                "url": meta.get("url")})
+                                "url": url})
             out.append({"case_id": case_id,
                         "institution": p.get("institution", case_id),
                         "year": p.get("year"),

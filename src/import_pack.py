@@ -19,14 +19,14 @@ import json
 import tarfile
 
 import cognee
-from config import PACK_FILE, IMPORTED_DATASET
+from config import PACK_FILE, PACK_ONTOLOGY_MEMBER, IMPORTED_DATASET
 
 
 def verify_and_extract(mempack_path):
     """Open the tarball, re-hash the three content files, and compare to pack.json."""
     with tarfile.open(mempack_path, "r:gz") as tar:
         graph_bytes = tar.extractfile("graph.json").read()
-        ont_bytes = tar.extractfile("risklore.owl").read()
+        ont_bytes = tar.extractfile(PACK_ONTOLOGY_MEMBER).read()
         prov_bytes = tar.extractfile("provenance.json").read()
         manifest = json.load(tar.extractfile("pack.json"))
 

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!--
-  RiskLore ontology — the shared vocabulary a pack is organized around.
+  Tessera ontology — the shared vocabulary a pack is organized around.
   Deliberately small (7 classes / 6 relations) so it stays legible and portable.
   Classes describe WHAT things are; object properties describe HOW they relate.
 -->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xml:base="http://memory-mesh.org/risklore"
-         xmlns="http://memory-mesh.org/risklore#">
+         xml:base="http://mosaic.dev/tessera"
+         xmlns="http://mosaic.dev/tessera#">
 
-  <owl:Ontology rdf:about="http://memory-mesh.org/risklore">
-    <rdfs:comment>RiskLore: the causal anatomy of historical financial failures.</rdfs:comment>
+  <owl:Ontology rdf:about="http://mosaic.dev/tessera">
+    <rdfs:comment>Tessera: a casebook of senior-analyst experience — the anatomy of financial failures and how analysts investigated them.</rdfs:comment>
   </owl:Ontology>
 
   <!-- ===== Classes (7) ===== -->

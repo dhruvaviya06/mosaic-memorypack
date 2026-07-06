@@ -3,41 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mosaic — Registry</title>
+<title>Mosaic — Tessera</title>
 <style>
   :root{
     --bg:#0b0f1a; --panel:#141a2b; --panel2:#1b2338; --line:#26304d;
-    --ink:#e8ecf6; --muted:#93a0bd; --accent:#5b8cff; --green:#37d39b;
+    --ink:#e8ecf6; --muted:#93a0bd; --accent:#5b8cff; --green:#37d39b; --amber:#f5b74e;
     --chip:#20294180;
   }
   *{box-sizing:border-box}
   body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#17203a 0,var(--bg) 55%);
-       color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
-  .wrap{max-width:1020px;margin:0 auto;padding:34px 22px 60px}
+       color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 22px 70px}
   header .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#8a5bff);
-        display:grid;place-items:center;font-weight:800;color:#fff}
-  h1{font-size:22px;margin:0}
-  .tag{color:var(--muted);font-size:13px;margin:2px 0 0;max-width:760px}
-  .sect{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin:30px 0 12px}
+  .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#8a5bff);
+        display:grid;place-items:center;font-weight:800;color:#fff;font-size:16px}
+  h1{font-size:24px;margin:0}
+  .tag{color:#c7d0e6;font-size:15px;margin:12px 0 0;max-width:720px}
+  .tag b{color:#fff}
+  .sect{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin:34px 0 12px}
   .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
-        border-radius:16px;padding:20px 20px 22px;position:relative}
-  .card.feature{border-color:#2f6bff55;box-shadow:0 0 0 1px #2f6bff22,0 18px 50px -30px #2f6bff88}
-  .row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-  .name{font-size:19px;font-weight:700;margin:0}
-  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
-        padding:5px 10px;border-radius:999px;background:#0f2a20;color:var(--green);border:1px solid #1e5c46}
-  .badge.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
-  .desc{color:#c7d0e6;font-size:14px;margin:14px 0 16px;max-width:820px}
-  .stats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
-  .chip{background:var(--chip);border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:12px}
+        border-radius:16px;padding:20px 22px}
+  .note{background:#1b1706;border:1px solid #4a3d12;color:#f0dfa8;border-radius:14px;padding:15px 18px;font-size:14px}
+  .note b{color:var(--amber)}
+  .stats{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+  .chip{background:var(--chip);border:1px solid var(--line);border-radius:9px;padding:6px 11px;font-size:12.5px}
   .chip b{color:#fff}
-  .k{color:var(--muted)}
-  .install{display:flex;align-items:center;gap:10px;background:#0a0e19;border:1px solid var(--line);
-        border-radius:10px;padding:11px 13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
-  .install .pfx{color:var(--green)}
-  .hash{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);word-break:break-all;margin:12px 0 0}
-  footer{color:var(--muted);font-size:12px;margin-top:36px;text-align:center}
+  ol{padding-left:20px;margin:6px 0} ol li{margin:0 0 8px}
+  .code{background:#0a0e19;border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;white-space:pre;overflow-x:auto}
+  a{color:var(--accent)}
+  .contrast{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.contrast{grid-template-columns:1fr}}
+  .contrast .c{border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px}
+  .contrast .c.bad{border-color:#5c2a2a} .contrast .c.good{border-color:#1e5c46}
+  .contrast .c h4{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  footer{color:var(--muted);font-size:12px;margin-top:40px;text-align:center}
 </style>
 </head>
 <body>
@@ -45,35 +45,63 @@
   <header>
     <div class="brand">
       <div class="logo">M</div>
-      <div>
-        <h1>Mosaic</h1>
-        <p class="tag">Portable memory for financial risk analysis — equip your AI agent with a
-          veteran analyst's precedent and a full evidence trail to primary sources, not raw customer data.</p>
-      </div>
+      <div><h1>Mosaic</h1></div>
     </div>
+    <p class="tag"><b>Senior-analyst expertise, installable.</b> Mosaic installs portable
+      memory packs into a self-hosted Node. <b>Tessera</b> is its flagship pack — a casebook
+      of senior-analyst experience: 40 analysed cases. Describe your situation, get the
+      precedent and the playbook.</p>
   </header>
 
-  <div class="sect">Verified pack</div>
-  <div class="card feature">
-    <div class="row">
-      <div><p class="name">RiskLore <span class="k" style="font-weight:500">v0.1.0</span></p></div>
-      <span class="badge dot">Verified · primary-source</span>
-    </div>
-    <p class="desc">The causal anatomy of financial failures and fraud typologies — distilled from
-      free regulatory and judicial primary sources. Import it and your existing risk-analysis agent
-      gains citable precedent with an evidence trail, from day one.</p>
-    <div class="stats">
-      <span class="chip"><span class="k">cases</span> <b>36</b> (6 deep + 30 typologies)</span>
-      <span class="chip"><span class="k">graph</span> <b>84</b> nodes · <b>151</b> edges</span>
-      <span class="chip"><span class="k">provenance</span> <b>100%</b> regulatory/judicial (deep tier)</span>
-      <span class="chip"><span class="k">embeddings</span> <b>none</b> — re-embedded locally</span>
-      <span class="chip"><span class="k">license</span> <b>single-tenant, no re-export</b></span>
-    </div>
-    <div class="install"><span class="pfx">$</span> mesh install risklore@0.1.0</div>
-    <p class="hash">sha256 · 9b7417739a3c1eeaa98a6ff9dd9f159528039c32d175c09f3f5bb2456a57c36d</p>
+  <div class="sect">The point</div>
+  <div class="contrast">
+    <div class="c bad"><h4>A bare LLM</h4>Confidently tells you what to do — ungrounded,
+      putting words in an analyst's mouth.</div>
+    <div class="c good"><h4>Tessera</h4>Names the closest analysed precedent, the warning
+      signs it shares, and how analysts investigated it — mapped onto your situation. The
+      judgement stays human.</div>
   </div>
 
-  <footer>Mosaic — self-hosted memory packs for financial risk analysis · WeMakeDevs × Cognee.</footer>
+  <div class="sect">Before you consult</div>
+  <div class="note"><b>Tessera is a casebook of senior-analyst experience — 40 analysed
+    cases.</b> It surfaces the precedent your situation most resembles and how experienced
+    analysts investigated it, so you don't repeat mistakes already made. Tessera shares
+    experience, not instructions — you connect the precedent to your own case.</div>
+
+  <div class="sect">What's inside</div>
+  <div class="card">
+    <div class="stats">
+      <span class="chip"><b>40</b> analysed cases</span>
+      <span class="chip"><b>6</b> primary-source deep</span>
+      <span class="chip"><b>4</b> historical (LTCM · Barings · Lehman · Wirecard)</span>
+      <span class="chip"><b>30</b> fraud / AML typologies</span>
+      <span class="chip">embeddings <b>none</b> — re-embedded locally</span>
+    </div>
+  </div>
+
+  <div class="sect">How a consult works</div>
+  <div class="card">
+    <ol>
+      <li><b>Recognise &amp; reference</b> — the closest precedent, the shared warning signs
+        as chips, and an invitation to map it onto your situation.</li>
+      <li><b>Map</b> — the recommended playbook: the precedent's investigation steps rewritten
+        to your own entities, voiced as what analysts in matching cases did.</li>
+      <li><b>Citations</b> — every precedent resolves to its primary-source document.</li>
+    </ol>
+  </div>
+
+  <div class="sect">Install (a self-hosted Node)</div>
+  <div class="code">git clone https://github.com/dhruvaviya06/mosaic-memorypack
+cd mosaic-memorypack &amp;&amp; python -m venv .venv
+.venv/bin/pip install -r requirements.txt
+cp .env.example .env            # paste one LLM key
+.venv/bin/python src/build_memory.py --all    # build the 40-case graph
+.venv/bin/python src/mesh.py publish &amp;&amp; src/mesh.py install
+.venv/bin/python src/consult_server.py        # Console at localhost:8000</div>
+
+  <footer>Mosaic — self-hosted memory packs · Tessera casebook ·
+    <a href="https://github.com/dhruvaviya06/mosaic-memorypack">source on GitHub</a> ·
+    WeMakeDevs × Cognee.</footer>
 </div>
 </body>
 </html>

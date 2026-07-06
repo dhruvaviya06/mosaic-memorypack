@@ -1,0 +1,31 @@
+{
+  "case_id": "wirecard_2020",
+  "institution": "Wirecard AG",
+  "year": 2020,
+  "source_documents": ["https://www.ft.com/wirecard"],
+  "category": "Accounting fraud: a listed payments group booked roughly EUR 1.9 billion of non-existent cash in trust accounts via fabricated third-party acquiring business, unravelling when auditors could not confirm the balances",
+  "risk_signals": [
+    "A large share of reported profit came from opaque third-party acquiring (TPA) partners in Asia with little verifiable substance",
+    "Around EUR 1.9 billion of cash purportedly held in escrow / trust accounts at Asian banks that could not be independently confirmed",
+    "Persistent short-seller and investigative-journalist (Financial Times) allegations, dismissed by the company and the regulator",
+    "Aggressive legal and PR attacks on critics instead of transparent rebuttal",
+    "A complex cross-border structure that obscured where revenue and cash actually originated"
+  ],
+  "analyst_reasoning": "Wirecard's reported growth leaned on third-party acquiring business run through partners in Asia, with much of the associated cash said to sit in trust accounts. When the substance of those partners and the existence of the cash could not be independently confirmed, the simplest explanation was that the profits and the balances were fabricated. The pattern of red flags — missing bank confirmations, reliance on opaque intermediaries, and hostility to scrutiny — pointed to fraud rather than mere accounting complexity.",
+  "investigation_steps": [
+    "Obtain independent confirmation of the escrow / trust balances directly from the custodian banks, not through the company or its intermediaries",
+    "Verify the real economic substance and transaction volumes of the third-party acquiring partners",
+    "Reconcile reported cash to audited bank statements and identify the actual trustees holding the funds",
+    "Treat credible external allegations from short-sellers and investigative journalists as leads to test, not attacks to dismiss",
+    "Scrutinize why profits concentrate in opaque, hard-to-verify jurisdictions"
+  ],
+  "decision": "The auditor refused to sign off the 2019 accounts when confirmations for the EUR 1.9 billion could not be obtained; Wirecard then admitted the cash likely did not exist, its chief executive resigned and was arrested, and the company filed for insolvency.",
+  "outcome": "Wirecard collapsed into insolvency in June 2020, exposing a long-running fraud at a former DAX-30 company. Its COO fled and remained at large, and the German regulator BaFin and the auditor were heavily criticized, prompting a Bundestag inquiry.",
+  "lessons_learned": [
+    "Cash on the balance sheet must be independently confirmed with custodian banks, never taken on trust",
+    "Profit concentrated in opaque intermediaries or jurisdictions warrants heightened scrutiny",
+    "Credible whistle-blower and journalist allegations are leads to investigate, not claims to litigate away",
+    "Aggressive hostility to scrutiny is itself a red flag",
+    "Auditors and regulators must verify economic substance over reported form"
+  ]
+}

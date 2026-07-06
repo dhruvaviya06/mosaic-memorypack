@@ -1,0 +1,31 @@
+{
+  "case_id": "ltcm_1998",
+  "institution": "Long-Term Capital Management (LTCM)",
+  "year": 1998,
+  "source_documents": ["https://home.treasury.gov/system/files/236/hedgfund.pdf"],
+  "category": "Hedge-fund blow-up: a highly leveraged relative-value fund whose convergence trades and off-balance-sheet derivative leverage overwhelmed thin capital when correlations spiked in a liquidity crisis",
+  "risk_signals": [
+    "Extreme leverage — roughly 25x on the balance sheet, and far higher notional exposure through swaps and repo",
+    "Large off-balance-sheet derivative positions that made true leverage invisible on the reported balance sheet",
+    "Concentrated relative-value / convergence trades that assumed spreads would mean-revert, held as crowded positions",
+    "Value-at-Risk models calibrated to normal-market correlations, with no allowance for a correlated flight-to-quality",
+    "Opacity to counterparties, each of whom saw only their slice of the book and none the aggregate leverage"
+  ],
+  "analyst_reasoning": "LTCM ran many small, highly leveraged bets that spreads would converge; each looked low-risk in isolation, but leverage magnified losses and the trades were far more correlated under stress than the models assumed. When Russia defaulted in August 1998, a flight to liquidity and quality made supposedly unrelated positions move together, so the diversification the fund relied on evaporated exactly when it was needed. Because no single counterparty could see the fund's aggregate positions, the true gross leverage — and the systemic risk it posed — was hidden until the losses cascaded.",
+  "investigation_steps": [
+    "Measure true leverage including off-balance-sheet derivative and repo notional, not just the reported balance sheet",
+    "Stress-test the convergence trades under a correlated liquidity shock and flight-to-quality, not normal-market correlations",
+    "Aggregate the fund's exposure across every prime broker and counterparty to reconstruct the gross positions no one party saw",
+    "Assess model risk in the VaR assumptions, especially the stability of correlations during stress",
+    "Evaluate how quickly the positions could be unwound and the price impact of a forced liquidation"
+  ],
+  "decision": "The Federal Reserve Bank of New York convened and facilitated a private-sector recapitalization: a consortium of about fourteen banks injected roughly USD 3.6 billion to take control and wind the fund down in an orderly way, avoiding a fire-sale — with no public money committed.",
+  "outcome": "LTCM lost about USD 4.6 billion in a few months and came close to collapse, threatening contagion through its dense web of counterparties. The bank consortium recapitalized and gradually liquidated the fund by 2000. The episode became the defining example of systemic risk from a single leveraged, interconnected fund.",
+  "lessons_learned": [
+    "Leverage measured only on the balance sheet badly understates risk when derivatives are involved",
+    "Diversification assumptions based on normal-market correlations fail precisely in a liquidity crisis",
+    "Crowded relative-value trades can move together under stress, so 'uncorrelated' positions are not safe",
+    "Opacity to counterparties hides aggregate leverage until it is too late to react",
+    "A single fund can pose systemic risk through the reach of its counterparty network"
+  ]
+}

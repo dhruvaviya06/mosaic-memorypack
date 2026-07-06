@@ -6,7 +6,7 @@ mesh — the Mosaic pack CLI (a thin wrapper over the Node operations).
     mesh install [pack]       install a .mempack into a fresh dataset      (-> import_pack)
     mesh uninstall [dataset]  forget an installed pack — the reversibility beat
 
-This is the `mesh install risklore@0.1.0` command shown in the registry UI.
+This is the `mesh install tessera@0.1.0` command a Node operator runs.
 `publish` and `install` drive Cognee (they use the LLM); `info` and `uninstall` do not.
 
 Run:  .venv/bin/python src/mesh.py <command> [args]
@@ -20,7 +20,7 @@ import json
 import sys
 import tarfile
 
-from config import PACK_FILE, PACK_LABEL, PACK_DATASET, IMPORTED_DATASET
+from config import PACK_FILE, PACK_LABEL, PACK_DATASET, IMPORTED_DATASET, INSTALL_NOTE
 
 USAGE = "usage: mesh <info | publish | install [pack] | uninstall [dataset]>"
 
@@ -59,6 +59,9 @@ async def cmd_install(pack: str) -> int:
     from import_pack import import_pack
     print(f"Installing {pack} from {PACK_FILE.name} …")
     await import_pack(PACK_FILE, IMPORTED_DATASET)
+    print("\n" + "-" * 72)
+    print(INSTALL_NOTE)
+    print("-" * 72)
     return 0
 
 

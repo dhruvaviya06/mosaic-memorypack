@@ -1,4 +1,4 @@
-# Sources Index — RiskLore v1.0
+# Sources Index — Tessera v1.0
 
 Derived from `sources_map.md`. This file is a **reference for populating `source_documents`
 in the case JSONs**; it is NOT ingested (lives outside `sources/`, and is not a case file).

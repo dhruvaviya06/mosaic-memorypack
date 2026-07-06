@@ -1,10 +1,12 @@
 """
-mcp_server.py — the Mosaic Node's MCP endpoint (the PRIMARY access path).
+mcp_server.py — the Mosaic Node's MCP endpoint.
 
-Exposes ONE tool, `consult_risklore(situation)`, over MCP (stdio). Any MCP-capable agent
-(Claude Desktop, Cursor, an in-house agent) points its MCP config at this file and its
-existing assistant silently gains citable precedent — the analyst's workflow changes by
-zero clicks.
+Exposes ONE tool, `consult_pack`, over MCP (stdio). Mosaic is a proof-of-concept whose
+flow is explicit and USER-INITIATED: the user installs the pack via a terminal command,
+their agent connects to this server over MCP, and the user then deliberately consults it.
+The tool description is intentionally plain and factual — it states what the tool does and
+returns, and does NOT instruct the host agent to auto-invoke it on every risk-shaped
+message.
 
 It calls the SAME shared logic as the dashboard (query.consult_with_citations), so the
 retrieval + provenance never diverge between surfaces.
@@ -12,7 +14,7 @@ retrieval + provenance never diverge between surfaces.
 Add to an MCP client config (e.g. Claude Desktop claude_desktop_config.json):
 
   "mcpServers": {
-    "mosaic-risklore": {
+    "mosaic-tessera": {
       "command": "/ABSOLUTE/PATH/mosaic/.venv/bin/python",
       "args": ["/ABSOLUTE/PATH/mosaic/src/mcp_server.py"]
     }
@@ -33,42 +35,50 @@ from dotenv import load_dotenv
 load_dotenv(os.path.join(_ROOT, ".env"))
 
 from mcp.server.fastmcp import FastMCP
-from config import PACK_DATASET, PACK_LABEL
+from config import PACK_DATASET, PACK_LABEL, PACK_NAME, PACK_DISPLAY
 from query import consult_with_citations
 
-mcp = FastMCP("mosaic-risklore")
+mcp = FastMCP(f"mosaic-{PACK_NAME}")
 
 
-@mcp.tool()
-async def consult_risklore(situation: str) -> str:
-    """Consult the installed RiskLore pack for precedent on a described risk situation.
+def _format(result: dict) -> str:
+    """Render the structured consult result as text, precedent-first, no disclaimer."""
+    lines = [result["answer"].strip()]
 
-    Given a free-text description of a financial risk situation (a counterparty, a bank,
-    a transaction pattern, a fraud scenario), returns the closest historical
-    financial-failure precedent from the pack, the warning signs and risk factors it
-    shares, an investigation playbook, and CITATIONS to the primary-source regulatory or
-    judicial documents behind the precedent. Use this to ground risk assessments in
-    verified precedent; a human makes the final decision.
-
-    Args:
-        situation: A plain-language description of the risk situation to assess.
-    """
-    result = await consult_with_citations(situation, PACK_DATASET)
-    lines = [result["answer"].strip(), ""]
     citations = result.get("citations") or []
     if citations:
-        lines.append("Sources (primary-source provenance):")
+        lines += ["", "Sources (primary-source provenance):"]
         for c in citations:
             year = f" ({c['year']})" if c.get("year") else ""
             for s in c.get("sources", []):
                 url = f" — {s['url']}" if s.get("url") else ""
                 lines.append(f"  - {c['institution']}{year}: {s['label']}{url}")
-    else:
-        lines.append("(No specific pack precedent matched; treat as general guidance.)")
-    lines.append("")
-    lines.append(f"[Answered from the installed pack {PACK_LABEL}. Decision support only — "
-                 "human judgment is final.]")
+
+    lines += ["", f"[From the installed pack {PACK_LABEL}.]"]
     return "\n".join(lines)
+
+
+@mcp.tool()
+async def consult_pack(situation: str, map_to_situation: bool = False) -> str:
+    """Look up the closest analysed precedent in the installed pack for a described financial situation.
+
+    Returns the closest historical case from the pack, the warning signs it shares, and
+    citations to the primary-source documents behind it. When map_to_situation is False,
+    it also returns an invitation to map the precedent onto the situation. When
+    map_to_situation is True, it additionally returns the precedent's investigation steps
+    rewritten to reference the described situation's entities, instruments, and amounts.
+
+    Args:
+        situation: A plain-language description of the financial situation to find a
+            precedent for.
+        map_to_situation: If False (default), returns the precedent, its shared warning
+            signs, and an invitation. If True, also returns the recommended playbook — in
+            that case pass the FULL situation here (the original description plus anything
+            the user added when confirming), so the mapping reflects everything known.
+    """
+    result = await consult_with_citations(situation, PACK_DATASET,
+                                          map_to_situation=map_to_situation)
+    return _format(result)
 
 
 if __name__ == "__main__":

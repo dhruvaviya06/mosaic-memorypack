@@ -1,9 +1,9 @@
 """
-build_memory.py — Phase 3: build the RiskLore knowledge graph from curated cases.
+build_memory.py — Phase 3: build the Tessera knowledge graph from curated cases.
 
 Pipeline:  validate  ->  remember(case texts [+ source PDFs])  ->  improve()
 
-This is the marketplace "publish" verb in action: publish = remember + improve.
+This is the pack "publish" step in action: publish = remember + improve.
 We split them explicitly (remember with self_improvement=False, then a separate
 improve()) so the two steps are visible and we don't pay for enrichment twice.
 
@@ -90,7 +90,7 @@ async def build(scope: str = "deep") -> int:
     print(f"=== improve: enriching '{PACK_DATASET}' ===")
     await cognee.improve(dataset=PACK_DATASET)
 
-    print("\n[done] RiskLore graph built. Run  src/inspect_graph.py  to X-ray it.")
+    print("\n[done] Tessera graph built. Run  src/inspect_graph.py  to X-ray it.")
     return 0
 
 

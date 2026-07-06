@@ -17,7 +17,7 @@ from config import PACK_FILE, PACK_DATASET
 from import_pack import import_pack, verify_and_extract
 from query import consult, bare_llm
 
-REGISTRY_URL = "https://dhruvaviya06.github.io/mosaic-memorypack/"
+PROJECT_URL = "https://dhruvaviya06.github.io/mosaic-memorypack/"
 SITUATION = (
     "A counterparty is a family office holding concentrated, highly leveraged positions "
     "built through total return swaps across several prime brokers, with persistent "
@@ -30,8 +30,8 @@ def banner(n: int, title: str) -> None:
 
 
 async def main() -> int:
-    banner(1, "DISCOVER — the analyst's org browses the Mosaic registry")
-    print(f"  Registry (live): {REGISTRY_URL}")
+    banner(1, "DISCOVER — the analyst's org inspects the Tessera pack artifact")
+    print(f"  Project: {PROJECT_URL}")
     manifest, _graph, digest, ok = verify_and_extract(PACK_FILE)
     print(f"  Found pack:  {manifest['label']}  by {manifest['publisher']}")
     print(f"  Graph:       {manifest['counts']['nodes_total']} nodes / "
@@ -49,7 +49,7 @@ async def main() -> int:
     print("  --- WITHOUT the pack (a bare LLM — what every org already has) ---")
     print("    " + bare.replace("\n", "\n    ")[:750] + " …\n")
     withpack = await consult(SITUATION, PACK_DATASET)
-    print("  --- WITH RiskLore installed (consult_risklore) ---")
+    print("  --- WITH Tessera installed (consult_pack) ---")
     print("    " + withpack.replace("\n", "\n    "))
 
     banner(4, "UNINSTALL — a single forget() removes the pack (reversibility)")

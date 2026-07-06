@@ -5,7 +5,7 @@ A .mempack is a tarball of four files, and it deliberately contains NO embedding
 that omission IS the model-agnosticism claim (the importer re-embeds locally):
 
     graph.json       node + edge lists (id, type, name, text, source_ref)
-    risklore.owl     the ontology (shared vocabulary)
+    ontology.owl     the ontology (shared vocabulary) — generic name, pack-agnostic
     provenance.json  case_id -> institution / year / source documents (+ URLs)
     pack.json        manifest: identity, license, counts, and a sha256 tamper seal
 
@@ -27,7 +27,7 @@ from collections import Counter
 
 from cognee.infrastructure.databases.graph import get_graph_engine
 from config import (
-    CASES_DIR, ONTOLOGY_FILE, PACK_DIR, PACK_FILE, PACK_FILENAME,
+    CASES_DIR, ONTOLOGY_FILE, PACK_ONTOLOGY_MEMBER, PACK_DIR, PACK_FILE, PACK_FILENAME,
     PLATFORM, PACK_NAME, PACK_VERSION, PACK_LABEL, PUBLISHER, LICENSE, VERIFICATION_TIER,
     DUMMY_CASE_IDS,
 )
@@ -100,7 +100,7 @@ def build_manifest(graph: dict, content_hash: str) -> dict:
             "node_types": dict(node_types),
         },
         "embeddings_included": False,   # the model-agnosticism claim, stated explicitly
-        "content_hash": content_hash,   # sha256 over graph.json + risklore.owl + provenance.json
+        "content_hash": content_hash,   # sha256 over graph.json + ontology.owl + provenance.json
     }
 
 
@@ -132,7 +132,7 @@ async def export() -> int:
     PACK_DIR.mkdir(exist_ok=True)
     members = {
         "graph.json": graph_bytes,
-        "risklore.owl": ontology_bytes,
+        PACK_ONTOLOGY_MEMBER: ontology_bytes,
         "provenance.json": prov_bytes,
         "pack.json": manifest_bytes,
     }

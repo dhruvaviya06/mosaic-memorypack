@@ -1,0 +1,31 @@
+{
+  "case_id": "barings_1995",
+  "institution": "Barings Bank",
+  "year": 1995,
+  "source_documents": ["Report of the Board of Banking Supervision Inquiry into the Circumstances of the Collapse of Barings (HMSO, HC 673, 1995)"],
+  "category": "Rogue-trader collapse: a single trader's unauthorized derivative positions, hidden in an error account, destroyed a 233-year-old bank because trading and settlement were never segregated",
+  "risk_signals": [
+    "One individual controlled BOTH front-office trading and back-office settlement in the Singapore operation",
+    "A hidden 'error account' (88888) used to absorb and conceal mounting losses",
+    "Large, repeated intragroup funding transfers from London to Singapore to meet margin calls, sent without challenge",
+    "Reported profits implausibly large for the stated low-risk index-arbitrage strategy",
+    "No independent risk oversight of the Singapore desk by head office"
+  ],
+  "analyst_reasoning": "Nick Leeson was supposed to run a low-risk arbitrage between Nikkei futures on SIMEX and Osaka, but instead took large unauthorized directional bets and buried the losses in account 88888. Because he controlled both trading and settlement, no independent function ever reconciled his true positions. London kept wiring cash to meet margin calls without asking why an ostensibly low-risk, market-neutral book needed enormous funding. When the Kobe earthquake moved the Nikkei sharply against his positions, the concealed losses exploded beyond the bank's capital.",
+  "investigation_steps": [
+    "Verify segregation of duties between trading and settlement, and flag any desk where one person controls both",
+    "Reconcile error and suspense accounts and demand an explanation for any unexplained positions",
+    "Question why reported profits exceed what the stated strategy could plausibly generate",
+    "Trace and challenge the large intragroup funding transfers being used to meet margin calls",
+    "Obtain position confirmations independently from the exchange rather than relying on the trader's own reporting"
+  ],
+  "decision": "The concealed losses — about GBP 827 million — exceeded Barings' entire capital. The bank could not be saved and was sold to ING for a nominal GBP 1, with its liabilities assumed.",
+  "outcome": "Barings collapsed in February 1995; Leeson was later jailed. The Board of Banking Supervision inquiry attributed the failure to a fundamental breakdown of management, internal controls, and the segregation of duties rather than to the market move itself.",
+  "lessons_learned": [
+    "Never let one person control both trading and settlement — segregation of duties is foundational",
+    "Outsized profits from a 'low-risk' strategy are a red flag to investigate, not a success to celebrate",
+    "Unexplained funding and margin demands must be challenged, not routinely met",
+    "Error and suspense accounts require independent, regular reconciliation",
+    "Management must genuinely understand and oversee the businesses and instruments it runs"
+  ]
+}

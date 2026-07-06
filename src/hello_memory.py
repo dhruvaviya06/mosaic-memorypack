@@ -1,5 +1,5 @@
 """
-hello_memory.py — Phase 1 smoke test for Mosaic / RiskLore.
+hello_memory.py — Phase 1 smoke test for Mosaic / Tessera.
 
 Purpose: prove cheaply that
   (a) the Gemini API key works,
