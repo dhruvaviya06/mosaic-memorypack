@@ -2,7 +2,7 @@
   "case_id": "wirecard_2020",
   "institution": "Wirecard AG",
   "year": 2020,
-  "source_documents": ["https://www.ft.com/wirecard"],
+  "source_documents": ["https://www.bundestag.de/dokumente/textarchiv/2021/kw25-de-3ua-bericht-847030"],
   "category": "Accounting fraud: a listed payments group booked roughly EUR 1.9 billion of non-existent cash in trust accounts via fabricated third-party acquiring business, unravelling when auditors could not confirm the balances",
   "risk_signals": [
     "A large share of reported profit came from opaque third-party acquiring (TPA) partners in Asia with little verifiable substance",

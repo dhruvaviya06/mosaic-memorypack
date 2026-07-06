@@ -37,22 +37,22 @@ SOURCE_META = {
     "dhfl_nclt_ibbi_order_2019.pdf": {
         "label": "NCLT / IBBI — DHFL administrator order (2019)",
         "url": "https://ibbi.gov.in/uploads/order/4dc4028ccc12768a83b5726399fc8698.pdf"},
-    # --- Light historical cases (name-brand precedents, URL-referenced sources) ---
+    # --- Light historical cases — official inquiry / government / court primary sources ---
     "https://home.treasury.gov/system/files/236/hedgfund.pdf": {
-        "label": "President's Working Group — Hedge Funds, Leverage, and the Lessons of LTCM (1999)",
+        "label": "US Treasury / President's Working Group — Hedge Funds, Leverage, and the Lessons of LTCM (1999)",
         "url": "https://home.treasury.gov/system/files/236/hedgfund.pdf"},
+    "https://www.gov.uk/government/publications/report-into-the-collapse-of-barings-bank": {
+        "label": "UK Board of Banking Supervision — Inquiry into the Collapse of Barings (GOV.UK, 1995)",
+        "url": "https://www.gov.uk/government/publications/report-into-the-collapse-of-barings-bank"},
     "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf": {
-        "label": "FCIC — The Financial Crisis Inquiry Report (2011)",
+        "label": "FCIC — The Financial Crisis Inquiry Report (govinfo, 2011)",
         "url": "https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf"},
-    "https://jenner.com/lehman": {
-        "label": "Valukas — Lehman Brothers Examiner's Report (2010), Repo 105",
-        "url": "https://jenner.com/lehman"},
-    "https://www.ft.com/wirecard": {
-        "label": "Financial Times — Wirecard investigation archive (press tier)",
-        "url": "https://www.ft.com/wirecard"},
-    "Report of the Board of Banking Supervision Inquiry into the Circumstances of the Collapse of Barings (HMSO, HC 673, 1995)": {
-        "label": "Board of Banking Supervision — Inquiry into the Collapse of Barings (HMSO, 1995)",
-        "url": None},
+    "https://elischolar.library.yale.edu/ypfs-documents/677/": {
+        "label": "Valukas — Lehman Brothers Examiner's Report, Vol. 3 / Repo 105 (Yale YPFS)",
+        "url": "https://elischolar.library.yale.edu/ypfs-documents/677/"},
+    "https://www.bundestag.de/dokumente/textarchiv/2021/kw25-de-3ua-bericht-847030": {
+        "label": "Deutscher Bundestag — Wirecard Committee of Inquiry, Final Report (Drucksache 19/30900, 2021)",
+        "url": "https://www.bundestag.de/dokumente/textarchiv/2021/kw25-de-3ua-bericht-847030"},
 }
 
 # distinctive keywords per cited case, for matching which case an answer cites

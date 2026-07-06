@@ -2,7 +2,7 @@
   "case_id": "barings_1995",
   "institution": "Barings Bank",
   "year": 1995,
-  "source_documents": ["Report of the Board of Banking Supervision Inquiry into the Circumstances of the Collapse of Barings (HMSO, HC 673, 1995)"],
+  "source_documents": ["https://www.gov.uk/government/publications/report-into-the-collapse-of-barings-bank"],
   "category": "Rogue-trader collapse: a single trader's unauthorized derivative positions, hidden in an error account, destroyed a 233-year-old bank because trading and settlement were never segregated",
   "risk_signals": [
     "One individual controlled BOTH front-office trading and back-office settlement in the Singapore operation",
