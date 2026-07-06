@@ -11,7 +11,7 @@ Field-shape rules (kept deliberately simple):
   - "year" is an integer.
 """
 
-# The seven-field case schema (adopted from the Memory Mesh doc). Order = narrative order.
+# The seven-field case schema (adopted from the project spec). Order = narrative order.
 CASE_FIELDS = [
     "category",             # TEXT  — kind of failure / risk domain
     "risk_signals",         # LIST  — observable warning signs, one per item

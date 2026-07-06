@@ -1,6 +1,6 @@
-# Memory Mesh — RiskLore
+# Financial Memorlyst — RiskLore
 
-> **Memory Mesh is the marketplace; RiskLore is its first verified pack.**
+> **Financial Memorlyst is the marketplace; RiskLore is its first verified pack.**
 
 A marketplace where organizations trade **verified experience** instead of models or raw
 data. Expert knowledge is curated into portable **memory packs** — a JSON knowledge graph +
@@ -82,13 +82,26 @@ cp .env.example .env      # then paste a free Groq key (console.groq.com) into .
 ## Run
 
 ```bash
+# --- no LLM needed (safe to run anytime) ---
 .venv/bin/python src/validate_cases.py     # check case files against the schema
+.venv/bin/python src/mesh.py info          # show the built pack's manifest + sha256
+
+# --- these drive Cognee (need an LLM key in .env) ---
 .venv/bin/python src/build_memory.py       # build the deep-tier pack (add --all for typologies)
 .venv/bin/python src/inspect_graph.py      # X-ray the graph (--html for an interactive view)
-.venv/bin/python src/export_pack.py        # write pack/risklore-<v>.mempack
+.venv/bin/python src/mesh.py publish       # export pack/risklore-<v>.mempack
+.venv/bin/python src/mesh.py install       # install the pack into a fresh dataset (re-embeds locally)
 .venv/bin/python src/test_roundtrip.py     # prove portability across instances
-.venv/bin/python src/query.py "<situation>"  # bare-LLM vs pack contrast
+.venv/bin/python src/query.py "<situation>"  # bare-LLM vs pack contrast (consult_risklore)
+.venv/bin/python src/mesh.py uninstall     # forget an installed pack — the reversibility beat
 ```
+
+## Deploy (registry UI)
+
+The registry is a self-contained static page (`registry-ui/index.html`, mirrored to
+`docs/index.html` for hosting). To publish it as your deployed link, enable GitHub Pages once:
+**Settings → Pages → Source: Deploy from a branch → `main` / `docs`**. Deployed link:
+`https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/memory-mesh/`).
 
 ## Repo layout
 
@@ -98,7 +111,7 @@ cases/         seven-field curated JSON (the expertise layer)
 ontology/      risklore.owl
 src/           validate / build / inspect / export / import / roundtrip / query
 pack/          built .mempack artifacts
-registry-ui/   Memory Mesh registry stub
+registry-ui/   Financial Memorlyst registry stub (deployable static site)
 SOURCES_INDEX.md   umbrella-doc → case mapping (provenance reference)
 ```
 

@@ -1,4 +1,4 @@
-# Memory Mesh / RiskLore — direct dependencies.
+# Financial Memorlyst / RiskLore — direct dependencies.
 # Pinned to the versions verified working on Python 3.14 (self-hosted local stack).
 # Recreate the env with:  python -m venv .venv && .venv/bin/pip install -r requirements.txt
 cognee==1.2.2

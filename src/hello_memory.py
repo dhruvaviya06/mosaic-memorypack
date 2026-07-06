@@ -1,5 +1,5 @@
 """
-hello_memory.py — Phase 1 smoke test for Memory Mesh / RiskLore.
+hello_memory.py — Phase 1 smoke test for Financial Memorlyst / RiskLore.
 
 Purpose: prove cheaply that
   (a) the Gemini API key works,
