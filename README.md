@@ -101,7 +101,7 @@ cp .env.example .env      # then paste a free Groq key (console.groq.com) into .
 The registry is a self-contained static page (`registry-ui/index.html`, mirrored to
 `docs/index.html` for hosting). To publish it as your deployed link, enable GitHub Pages once:
 **Settings → Pages → Source: Deploy from a branch → `main` / `docs`**. Deployed link:
-`https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/mosaic/`).
+`https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/mosaic-memorypack/`).
 
 ## Repo layout
 
