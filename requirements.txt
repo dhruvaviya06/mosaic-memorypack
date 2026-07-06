@@ -4,3 +4,4 @@
 cognee==1.2.2
 python-dotenv==1.0.1
 fastembed==0.8.0    # local embeddings (no API/quota) — the "re-embeds locally" path
+mcp==1.28.1         # MCP server SDK — the consult_risklore endpoint (primary access path)

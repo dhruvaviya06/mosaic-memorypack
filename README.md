@@ -103,6 +103,40 @@ The registry is a self-contained static page (`registry-ui/index.html`, mirrored
 **Settings → Pages → Source: Deploy from a branch → `main` / `docs`**. Deployed link:
 `https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/mosaic-memorypack/`).
 
+## Connect via MCP (the primary path)
+
+In production, analysts never open the dashboard — their existing agent calls the Node's one
+MCP tool, `consult_risklore(situation)`, and weaves the precedent (with citations) into its
+own answer. Point any MCP client at `src/mcp_server.py`:
+
+```jsonc
+// e.g. Claude Desktop  ~/Library/Application Support/Claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "mosaic-risklore": {
+      "command": "/ABSOLUTE/PATH/mosaic/.venv/bin/python",
+      "args": ["/ABSOLUTE/PATH/mosaic/src/mcp_server.py"]
+    }
+  }
+}
+```
+Restart the client; the agent can now call `consult_risklore`. The dashboard
+(`src/consult_server.py`) and the MCP server share the same retrieval + provenance logic
+(`query.consult_with_citations`), so answers never diverge between surfaces.
+
+## Run on another device (a fresh Node)
+
+```bash
+git clone https://github.com/dhruvaviya06/mosaic-memorypack && cd mosaic-memorypack
+python -m venv .venv && .venv/bin/pip install -r requirements.txt
+cp .env.example .env                      # paste one LLM key (Gemini/Groq/OpenAI)
+.venv/bin/python src/build_memory.py      # build the pack graph
+.venv/bin/python src/mesh.py publish      # export pack/risklore-<v>.mempack
+.venv/bin/python src/mesh.py install      # install into this Node (re-embeds locally)
+.venv/bin/python src/consult_server.py    # dashboard at http://localhost:8000
+# …or wire an MCP client to src/mcp_server.py (see above) — the primary path
+```
+
 ## Repo layout
 
 ```

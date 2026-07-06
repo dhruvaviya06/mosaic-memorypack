@@ -43,14 +43,27 @@ async def consult(situation: str, dataset: str = PACK_DATASET) -> str:
         f"closely matches this situation? Name it, give the warning signs and risk "
         f"factors it shares, and state what should be investigated."
     )
+    # RAG_COMPLETION (semantic retrieval + one generation) matches a generic situation to
+    # precedent with the fewest LLM calls — important on small free-tier daily quotas.
     results = await cognee.recall(
-        query, query_type=SearchType.HYBRID_COMPLETION, datasets=[dataset]
+        query, query_type=SearchType.RAG_COMPLETION, datasets=[dataset]
     )
     for e in results:
         text = getattr(e, "answer", None) or getattr(e, "text", None)
         if text:
             return text.strip()
     return "(no precedent found in the installed pack)"
+
+
+async def consult_with_citations(situation: str, dataset: str = PACK_DATASET) -> dict:
+    """consult() plus the evidence trail — the shape both the UI and MCP server return.
+
+    Returns {"answer": <text>, "citations": [{case_id, institution, year, sources[...]}]}.
+    Provenance is what distinguishes this from a plain LLM, so it travels with every answer.
+    """
+    from citations import citations_for
+    answer = await consult(situation, dataset)
+    return {"answer": answer, "citations": citations_for(answer)}
 
 
 async def bare_llm(question: str) -> str:
