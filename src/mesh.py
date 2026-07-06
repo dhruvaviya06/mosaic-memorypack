@@ -1,5 +1,5 @@
 """
-mesh — the Financial Memorlyst pack CLI (a thin wrapper over the Node operations).
+mesh — the Mosaic pack CLI (a thin wrapper over the Node operations).
 
     mesh info                 show the current pack's manifest (no LLM)
     mesh publish              export the built graph to a .mempack        (-> export_pack)

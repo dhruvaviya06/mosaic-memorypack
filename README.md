@@ -1,6 +1,6 @@
-# Financial Memorlyst — RiskLore
+# Mosaic — RiskLore
 
-> **Financial Memorlyst is the marketplace; RiskLore is its first verified pack.**
+> **Mosaic is the marketplace; RiskLore is its first verified pack.**
 
 A marketplace where organizations trade **verified experience** instead of models or raw
 data. Expert knowledge is curated into portable **memory packs** — a JSON knowledge graph +
@@ -101,7 +101,7 @@ cp .env.example .env      # then paste a free Groq key (console.groq.com) into .
 The registry is a self-contained static page (`registry-ui/index.html`, mirrored to
 `docs/index.html` for hosting). To publish it as your deployed link, enable GitHub Pages once:
 **Settings → Pages → Source: Deploy from a branch → `main` / `docs`**. Deployed link:
-`https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/memory-mesh/`).
+`https://<user>.github.io/<repo>/` (e.g. `https://dhruvaviya06.github.io/mosaic/`).
 
 ## Repo layout
 
@@ -111,7 +111,7 @@ cases/         seven-field curated JSON (the expertise layer)
 ontology/      risklore.owl
 src/           validate / build / inspect / export / import / roundtrip / query
 pack/          built .mempack artifacts
-registry-ui/   Financial Memorlyst registry stub (deployable static site)
+registry-ui/   Mosaic registry stub (deployable static site)
 SOURCES_INDEX.md   umbrella-doc → case mapping (provenance reference)
 ```
 

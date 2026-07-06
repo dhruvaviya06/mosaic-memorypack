@@ -9,7 +9,7 @@ export filename all follow.
 from pathlib import Path
 
 # --- Pack identity (flows into pack.json and the Cognee dataset name) --------
-PLATFORM = "financial-memorlyst"   # the marketplace this pack belongs to
+PLATFORM = "mosaic"   # the marketplace this pack belongs to
 PACK_NAME = "risklore"             # this pack's name
 PACK_VERSION = "0.1.0"             # pack version (bump on re-curation)
 
@@ -39,7 +39,7 @@ PACK_FILENAME = f"{PACK_NAME}-{PACK_VERSION}.mempack"
 PACK_FILE = PACK_DIR / PACK_FILENAME
 
 # --- Pack manifest metadata (pack.json) --------------------------------------
-PUBLISHER = "dhruvaviya06 (Financial Memorlyst)"
+PUBLISHER = "dhruvaviya06 (Mosaic)"
 LICENSE = "single-tenant, no re-export"
 # Verification tier: the deep cases are AI-extracted from real regulatory/judicial
 # primary sources, pending human verification (which would upgrade this to
