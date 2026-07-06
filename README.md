@@ -177,6 +177,7 @@ sources/       raw primary-source docs (the evidence layer)
 cases/         seven-field curated JSON (the expertise layer) — 40 cases
 ontology/      tessera.owl
 src/           validate / build / inspect / export / import / roundtrip / query / learn
+scripts/       throttled_build.py — resumable, rate-limit-friendly build for free tiers
 pack/          built .mempack artifacts
 docs/          static Mosaic project splash (GitHub Pages)
 SOURCES_INDEX.md   umbrella-doc → case mapping (provenance reference)

@@ -21,3 +21,6 @@ pack/*.html
 
 # --- Built pack artifacts (regenerable via export_pack.py) ---
 pack/*.mempack
+
+# --- Throttled-build resume state (regenerable) ---
+.throttled_build_progress.json
