@@ -1,17 +1,18 @@
 # Mosaic — Tessera
 
-> **Mosaic — senior-analyst expertise, installable.**
+> **Mosaic — expert reasoning from the primary record, installable.**
 > **Tessera: 40 analysed cases; describe your situation, get the precedent and the playbook.**
 
 **Mosaic** installs portable **memory packs** into a self-hosted **Node** (a Cognee
-instance). **Tessera** is its flagship pack: a **casebook of senior-analyst experience** —
+instance). **Tessera** is its flagship pack: a **casebook of expert reasoning reconstructed
+from the primary regulatory/judicial record** —
 40 financially analysed cases, historical failures *and* investigation typologies, each
 capturing how expert analysts recognised the pattern and what steps resolved (or should
 have resolved) it.
 
 Financial expertise only comes from experience. Cognee maps these cases into a knowledge
 graph, matches a described situation to the precedent it most resembles, and surfaces **how
-experienced analysts investigated it** — so an org's existing agent gains citable precedent
+how each case was investigated in the primary record** — so an org's existing agent gains citable precedent
 with a full evidence trail to primary sources, and **zero workflow change**.
 
 > *Tessera shares experience, not instructions — you connect the precedent to your own case.*
@@ -72,10 +73,11 @@ never diverge between surfaces.
 
 Shown once at `mesh install` and on the Console:
 
-> *Tessera is a casebook of senior-analyst experience — 40 analysed cases. It surfaces the
-> precedent your situation most resembles and how experienced analysts investigated it, so
-> you don't repeat mistakes already made. Tessera shares experience, not instructions — you
-> connect the precedent to your own case.*
+> *Tessera is a casebook of expert reasoning reconstructed from the primary
+> regulatory/judicial record — 40 analysed cases. It surfaces the precedent your situation
+> most resembles and how that case was investigated in the record, so you don't repeat
+> mistakes already made. Tessera shares experience, not instructions — you connect the
+> precedent to your own case.*
 
 ---
 
@@ -124,7 +126,8 @@ A gzipped tarball, **no embeddings**:
 - **Groq** `llama-3.3-70b-versatile` for reasoning (via cognee's `custom` provider)
 - **Local `fastembed`** embeddings (`BAAI/bge-small-en-v1.5`) — no API, no quota; this *is*
   the "re-embeds locally, model-agnostic" claim
-- Python 3.14, isolated in `.venv/`
+- **Python 3.12** recommended (developed/verified on 3.14.3; 3.12 pinned for stability),
+  isolated in `.venv/`
 
 ## Setup
 
@@ -234,5 +237,17 @@ pack/          built .mempack artifacts
 docs/          static Mosaic project splash (GitHub Pages)
 SOURCES_INDEX.md   umbrella-doc → case mapping (provenance reference)
 ```
+
+## Future work (known, deliberate omissions)
+
+- **Publisher identity / pack signing.** The `pack.json` sha256 is a *tamper* seal — it
+  proves the pack wasn't modified, not *who* published it. Cryptographic signing (a publisher
+  keypair + signature) is deferred; for now, trust the source you download from.
+- **Practitioner review of cases.** The cases are expert reasoning *reconstructed from the
+  primary record* by the author + an LLM — not authored by practising analysts. Having a
+  practitioner review a sample would upgrade the claim (tracked as a `TODO(P3)` in
+  `src/config.py`).
+- **A second pack.** One pack means Mosaic is effectively Tessera's installer; a second thin
+  pack in an adjacent domain (built on the same name-agnostic format) would prove the platform.
 
 *Built for "The Hangover Part AI: Where's My Context?" — WeMakeDevs × Cognee.*

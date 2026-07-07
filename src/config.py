@@ -19,24 +19,28 @@ PACK_LABEL = f"{PACK_NAME}@{PACK_VERSION}"      # e.g. "tessera@0.1.0"
 PACK_DISPLAY = PACK_NAME.capitalize()            # e.g. "Tessera" (title-case UI label)
 
 # --- Positioning (drives all copy; single source of truth for the framing) ---
-# Tessera is NOT "a database of financial disasters". It is a CASEBOOK of senior-analyst
-# experience: financially analysed cases — historical failures AND investigation
-# typologies — each capturing how expert analysts recognised the pattern and what steps
-# resolved (or should have resolved) it. Cognee maps these into a graph, matches the
-# user's situation to a precedent, and surfaces the steps experienced analysts took.
+# Tessera is NOT "a database of financial disasters", and the cases are NOT authored by
+# practising analysts. It is a CASEBOOK of expert reasoning RECONSTRUCTED from the primary
+# regulatory/judicial record: financially analysed cases — historical failures AND
+# investigation typologies — each distilling how the official record shows the pattern was
+# recognised and what steps resolved (or should have resolved) it. Cognee maps these into a
+# graph, matches the user's situation to a precedent, and surfaces those investigation steps.
+# TODO(P3): have a practising analyst review a sample of cases, to upgrade the claim from
+# "reconstructed from the record" toward "practitioner-reviewed".
 PACK_CASE_COUNT = 40
-PACK_TAGLINE = "senior-analyst expertise, installable"
+PACK_TAGLINE = "expert reasoning from the primary record, installable"
 PACK_PITCH = (
     f"{PACK_DISPLAY}: {PACK_CASE_COUNT} analysed cases; describe your situation, "
     f"get the precedent and the playbook."
 )
 
 # The ONLY disclaimer in the product. Shown once, at install time (CLI + dashboard +
-# README) — never repeated per answer. Frames the pack as shared experience, not advice.
+# README) — never repeated per answer. Frames the pack as reconstructed precedent, not advice.
 INSTALL_NOTE = (
-    f"{PACK_DISPLAY} is a casebook of senior-analyst experience — {PACK_CASE_COUNT} "
-    "analysed cases. It surfaces the precedent your situation most resembles and how "
-    "experienced analysts investigated it, so you don't repeat mistakes already made. "
+    f"{PACK_DISPLAY} is a casebook of expert reasoning reconstructed from the primary "
+    f"regulatory/judicial record — {PACK_CASE_COUNT} analysed cases. It surfaces the "
+    "precedent your situation most resembles and how that case was investigated in the "
+    "record, so you don't repeat mistakes already made. "
     f"{PACK_DISPLAY} shares experience, not instructions — you connect the precedent "
     "to your own case."
 )

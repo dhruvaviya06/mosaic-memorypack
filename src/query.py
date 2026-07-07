@@ -175,7 +175,7 @@ async def rewrite_playbook(situation: str, case: dict) -> list[str]:
 
     numbered = "\n".join(f"{i+1}. {s}" for i, s in enumerate(steps))
     prompt = (
-        f"You are {PACK_DISPLAY}, a casebook of senior-analyst experience.\n"
+        f"You are {PACK_DISPLAY}, a casebook of expert reasoning reconstructed from the primary record.\n"
         f"PRECEDENT: {case.get('institution')} ({case.get('year')}) — {case.get('category')}\n"
         f"In that case, experienced analysts investigated it via these steps:\n{numbered}\n\n"
         f"USER'S SITUATION:\n{situation}\n\n"

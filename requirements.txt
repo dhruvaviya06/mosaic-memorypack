@@ -1,5 +1,5 @@
 # Mosaic / Tessera — direct dependencies.
-# Pinned to the versions verified working on Python 3.14 (self-hosted local stack).
+# Python 3.12 recommended (self-hosted local stack); developed/verified on 3.14.3.
 # Recreate the env with:  python -m venv .venv && .venv/bin/pip install -r requirements.txt
 cognee==1.2.2
 python-dotenv==1.0.1
