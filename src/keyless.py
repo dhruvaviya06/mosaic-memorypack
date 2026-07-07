@@ -93,6 +93,19 @@ def match_pack_case(situation: str, pack_file: Path = PACK_FILE,
     return cases[i] if float(sims[i]) >= min_sim else None
 
 
+def rank_cases(situation: str, k: int = 3, pack_file: Path = PACK_FILE) -> list[tuple[dict, float]]:
+    """Return the top-k (case, similarity) pairs for a situation — used by the eval harness."""
+    if not pack_file.exists():
+        return []
+    cases, emb = _index(pack_file)
+    if not cases:
+        return []
+    q = _embed([situation])[0]
+    sims = emb @ q
+    order = np.argsort(-sims)[: max(1, k)]
+    return [(cases[i], float(sims[i])) for i in order]
+
+
 def pack_available(pack_file: Path = PACK_FILE) -> bool:
     return pack_file.exists()
 

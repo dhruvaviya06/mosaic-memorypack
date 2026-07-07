@@ -91,6 +91,20 @@ Shown once at `mesh install` and on the Console:
 - **Provenance** — deep and name-brand cases resolve to real regulatory/judicial (or, for
   Wirecard, press-tier) primary sources.
 
+## Retrieval accuracy
+
+Matching *is* the product, so it's measured, not asserted. On **26 held-out scenarios**
+(paraphrased, not copied from any case; in `eval/`), the keyless retriever scores
+**top-1 81% / top-3 88%**:
+
+```bash
+.venv/bin/python eval/run_eval.py     # keyless — no LLM key, no cost
+```
+
+The misses cluster among semantically adjacent cases (two accounting-fraud cases, two AML
+typologies, an invoice-redirect pair). The harness makes any future retrieval change
+measurable rather than vibes-based.
+
 ## Pack format (`tessera-{version}.mempack`)
 
 A gzipped tarball, **no embeddings**:
@@ -215,6 +229,7 @@ ontology/      tessera.owl
 src/           validate / build / export / import / query / keyless / consult / learn
                (keyless.py = local no-LLM retrieval; consult.py = keyless terminal consult)
 scripts/       throttled_build.py — resumable, rate-limit-friendly build for free tiers
+eval/          held-out scenarios + run_eval.py (top-1 / top-3 precedent accuracy)
 pack/          built .mempack artifacts
 docs/          static Mosaic project splash (GitHub Pages)
 SOURCES_INDEX.md   umbrella-doc → case mapping (provenance reference)
