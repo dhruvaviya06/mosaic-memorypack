@@ -2,11 +2,12 @@
 mcp_server.py — the Mosaic Node's MCP endpoint.
 
 Exposes ONE tool, `consult_pack`, over MCP (stdio). Mosaic is a proof-of-concept whose
-flow is explicit and USER-INITIATED: the user installs the pack via a terminal command,
-their agent connects to this server over MCP, and the user then deliberately consults it.
-The tool description is intentionally plain and factual — it states what the tool does and
-returns, and does NOT instruct the host agent to auto-invoke it on every risk-shaped
-message.
+flow is explicit and USER-INITIATED. Rather than *hoping* a plain description stops the
+host agent from auto-invoking on every risk-shaped message, user-initiation is enforced
+STRUCTURALLY: consult_pack takes a `user_confirmed` flag, and an unsolicited call (the
+default, user_confirmed=False) does NOT run — it returns a short stub telling the agent to
+ask the user first. A precedent only comes back once the agent passes user_confirmed=True,
+which the tool doc says to do only after the user has actually asked.
 
 It calls the SAME shared logic as the dashboard (query.consult_with_citations), so the
 retrieval + provenance never diverge between surfaces.
@@ -40,6 +41,13 @@ from query import consult_with_citations
 
 mcp = FastMCP(f"mosaic-{PACK_NAME}")
 
+# Returned for an unsolicited call — the structural user-initiation gate.
+_GATE_STUB = (
+    f"{PACK_DISPLAY} precedent lookup is available for this situation, but consulting is "
+    "user-initiated. Ask the user whether they'd like the closest analysed precedent from "
+    "the pack, and only if they say yes, call consult_pack again with user_confirmed=true."
+)
+
 
 def _format(result: dict) -> str:
     """Render the structured consult result as text, precedent-first, no disclaimer."""
@@ -59,23 +67,30 @@ def _format(result: dict) -> str:
 
 
 @mcp.tool()
-async def consult_pack(situation: str, map_to_situation: bool = False) -> str:
+async def consult_pack(situation: str, user_confirmed: bool = False,
+                       map_to_situation: bool = False) -> str:
     """Look up the closest analysed precedent in the installed pack for a described financial situation.
 
-    Returns the closest historical case from the pack, the warning signs it shares, and
-    citations to the primary-source documents behind it. When map_to_situation is False,
-    it also returns an invitation to map the precedent onto the situation. When
-    map_to_situation is True, it additionally returns the precedent's investigation steps
-    rewritten to reference the described situation's entities, instruments, and amounts.
+    Consulting is user-initiated: this tool only runs when user_confirmed is true. Returns
+    the closest historical case from the pack, the warning signs it shares, and citations to
+    the primary-source documents behind it. When map_to_situation is False it also returns an
+    invitation to map the precedent onto the situation; when True it additionally returns the
+    precedent's investigation steps rewritten to the described situation's entities and amounts.
 
     Args:
         situation: A plain-language description of the financial situation to find a
             precedent for.
+        user_confirmed: Set true ONLY after the user has explicitly asked to consult the
+            pack (or confirmed they want a precedent). If false (the default), the tool does
+            NOT run and returns a short reminder to ask the user first — so consulting is
+            never auto-invoked on a risk-shaped message.
         map_to_situation: If False (default), returns the precedent, its shared warning
             signs, and an invitation. If True, also returns the recommended playbook — in
             that case pass the FULL situation here (the original description plus anything
             the user added when confirming), so the mapping reflects everything known.
     """
+    if not user_confirmed:
+        return _GATE_STUB
     result = await consult_with_citations(situation, PACK_DATASET,
                                           map_to_situation=map_to_situation)
     return _format(result)

@@ -142,9 +142,12 @@ cp .env.example .env      # an LLM key is only needed to BUILD a pack or to prod
 ## Connect via MCP (the primary path)
 
 In production, analysts never open the Console — their existing agent calls the Node's one
-MCP tool, `consult_pack(situation, map_to_situation)`, and weaves the precedent (with
-citations) into its own answer. The tool description is plain and factual, so the host agent
-does not auto-invoke it; consulting is user-initiated. Point any MCP client at
+MCP tool, `consult_pack(situation, user_confirmed, map_to_situation)`, and weaves the
+precedent (with citations) into its own answer. Consulting is **user-initiated by
+construction**: an unsolicited call (`user_confirmed=false`, the default) does not run — it
+returns a short stub telling the agent to ask the user first. A precedent only comes back
+once the agent passes `user_confirmed=true`, which it should do only after the user asks. So
+the guarantee is structural, not a hope pinned on the tool's wording. Point any MCP client at
 `src/mcp_server.py`:
 
 ```jsonc
@@ -159,9 +162,10 @@ does not auto-invoke it; consulting is user-initiated. Point any MCP client at
 }
 ```
 
-The first call returns the precedent, its shared warning signs, and an invitation to map it.
-On the user's confirmation, the agent calls again with `map_to_situation=True` and the **full
-enriched situation** to get the tailored playbook.
+Once the user asks, the agent calls with `user_confirmed=true` and gets the precedent, its
+shared warning signs, and an invitation to map it. On the user's further confirmation, the
+agent calls again with `map_to_situation=true` and the **full enriched situation** to get the
+tailored playbook.
 
 ## Try it on a fresh machine — no LLM key
 
