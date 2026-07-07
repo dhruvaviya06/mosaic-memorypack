@@ -82,6 +82,27 @@ def load_provenance() -> dict:
     return _PROV_CACHE
 
 
+def _sources_for(prov_entry: dict) -> list[dict]:
+    """Build the clickable source list for one provenance entry."""
+    sources = []
+    for name in prov_entry.get("source_documents", []):
+        if isinstance(name, str) and name.startswith("pending"):
+            continue
+        meta = SOURCE_META.get(name, {})
+        url = meta.get("url") or (name if str(name).startswith("http") else None)
+        sources.append({"name": name, "label": meta.get("label", name), "url": url})
+    return sources
+
+
+def citations_for_case(case_id: str) -> list[dict]:
+    """Exact evidence trail for a single known case_id (the keyless path already knows it)."""
+    p = load_provenance().get(case_id)
+    if not p:
+        return []
+    return [{"case_id": case_id, "institution": p.get("institution", case_id),
+             "year": p.get("year"), "sources": _sources_for(p)}]
+
+
 def citations_for(answer: str) -> list[dict]:
     """Return the evidence trail for the cases named in a consult answer.
 

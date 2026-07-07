@@ -24,3 +24,6 @@ pack/*.mempack
 
 # --- Throttled-build resume state (regenerable) ---
 .throttled_build_progress.json
+
+# --- Keyless local embedding index (regenerable from the pack) ---
+pack/.keyless_index_*.npz

@@ -37,7 +37,9 @@ The aim is simple: **don't repeat mistakes financial analysts have already made.
    analysts in matching cases did* (past tense, no second-person imperatives).
 3. **Citations throughout** — every named precedent resolves to its primary-source document.
 
-There is no per-answer disclaimer. The single framing note is shown once, at install time.
+**Step 1 is keyless** — the precedent, chips, and citations are retrieved locally from the
+pack with fastembed (no LLM key, no Cognee install). Only Step 2's tailored rewrite calls a
+model. There is no per-answer disclaimer; the single framing note is shown once, at install.
 
 ## Cognee's four verbs, driving the lifecycle
 
@@ -96,8 +98,11 @@ A gzipped tarball, **no embeddings**:
 - `ontology.owl` — the ontology (7 classes / 6 relations), stored under a generic name so
   the pack format stays name-agnostic
 - `provenance.json` — case → institution / year / source documents
+- `cases.json` — the curated case-level text, so a fresh Node can retrieve **keyless**
+  (embed locally with fastembed, no LLM) straight from the pack
 - `pack.json` — manifest: platform, name, version, publisher, license, verification tier,
-  node/edge counts, and a **sha256 content hash** (tamper seal)
+  node/edge counts, and a **sha256 content hash** (a *tamper* seal over graph + ontology +
+  provenance — it proves the pack wasn't modified, not who published it)
 
 ## Stack
 
@@ -112,25 +117,26 @@ A gzipped tarball, **no embeddings**:
 ```bash
 python -m venv .venv
 .venv/bin/pip install -r requirements.txt
-cp .env.example .env      # then paste an LLM key (Groq/Gemini/OpenAI) into .env
+cp .env.example .env      # an LLM key is only needed to BUILD a pack or to produce the
+                          # tailored playbook (Step 2). Precedent lookup (Step 1) is keyless.
 ```
 
 ## Run
 
 ```bash
-# --- no LLM needed (safe to run anytime) ---
-.venv/bin/python src/validate_cases.py     # check case files against the schema
-.venv/bin/python src/mesh.py info          # show the built pack's manifest + sha256
+# --- no LLM key needed (keyless — safe to run anytime) ---
+.venv/bin/python src/validate_cases.py       # check case files against the schema
+.venv/bin/python src/mesh.py info            # show the built pack's manifest + sha256
+.venv/bin/python src/consult.py "<situation>"  # KEYLESS precedent lookup (Step 1)
 
-# --- these drive Cognee (need an LLM key in .env) ---
-.venv/bin/python src/build_memory.py       # build the deep-tier pack (add --all for all 40)
-.venv/bin/python src/inspect_graph.py      # X-ray the graph (--html for an interactive view)
-.venv/bin/python src/mesh.py publish       # export pack/tessera-<v>.mempack
-.venv/bin/python src/mesh.py install       # install into a fresh dataset (re-embeds locally)
-.venv/bin/python src/test_roundtrip.py     # prove portability across instances
-.venv/bin/python src/query.py "<situation>"  # bare-LLM vs pack contrast
-.venv/bin/python src/consult_server.py     # Mosaic Console at http://localhost:8000
-.venv/bin/python src/mesh.py uninstall     # forget an installed pack — the reversibility beat
+# --- these need an LLM key in .env ---
+.venv/bin/python src/consult.py --map "<situation>"   # Step 2: tailored playbook
+.venv/bin/python scripts/throttled_build.py --prune   # build all 40 (rate-limit friendly)
+.venv/bin/python src/mesh.py publish         # export pack/tessera-<v>.mempack
+.venv/bin/python src/mesh.py install         # install into Cognee (round-trip / contrast demo)
+.venv/bin/python src/query.py "<situation>"  # bare-LLM vs Cognee-recall contrast
+.venv/bin/python src/consult_server.py       # Mosaic Console at http://localhost:8000
+.venv/bin/python src/mesh.py uninstall       # forget an installed pack — the reversibility beat
 ```
 
 ## Connect via MCP (the primary path)
@@ -157,18 +163,44 @@ The first call returns the precedent, its shared warning signs, and an invitatio
 On the user's confirmation, the agent calls again with `map_to_situation=True` and the **full
 enriched situation** to get the tailored playbook.
 
-## Run on another device (a fresh Node)
+## Try it on a fresh machine — no LLM key
+
+Portability is the whole point: you **download** the pack, you don't rebuild it. Step 1 (the
+closest precedent + warning signs + citations) runs entirely locally with fastembed — **no
+LLM API key, no Cognee install.**
 
 ```bash
 git clone https://github.com/dhruvaviya06/mosaic-memorypack && cd mosaic-memorypack
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
-cp .env.example .env                      # paste one LLM key (Groq/Gemini/OpenAI)
-.venv/bin/python src/build_memory.py --all  # build the pack graph (all 40 cases)
-.venv/bin/python src/mesh.py publish      # export pack/tessera-<v>.mempack
-.venv/bin/python src/mesh.py install      # install into this Node (re-embeds locally)
-.venv/bin/python src/consult_server.py    # Console at http://localhost:8000
-# …or wire an MCP client to src/mcp_server.py (see above) — the primary path
+# download the built pack from GitHub Releases into pack/ :
+curl -L -o pack/tessera-0.1.0.mempack \
+  https://github.com/dhruvaviya06/mosaic-memorypack/releases/latest/download/tessera-0.1.0.mempack
+# keyless precedent lookup — no key needed:
+.venv/bin/python src/consult.py "a family office with concentrated leveraged swaps and margin breaches"
 ```
+
+Want the playbook tailored to your situation (Step 2)? Add an LLM key to `.env` and re-run
+with `--map`:
+
+```bash
+.venv/bin/python src/consult.py --map "a family office with concentrated leveraged swaps and margin breaches"
+```
+
+## Build your own pack
+
+Rebuilding from source proves *reproducibility* (and is how you author a new pack). This
+needs an LLM key — Cognee's graph extraction runs the model:
+
+```bash
+cp .env.example .env                                  # paste one LLM key (Groq/Gemini/OpenAI)
+.venv/bin/python scripts/throttled_build.py --prune   # build all 40 (rate-limit friendly, resumable)
+.venv/bin/python src/mesh.py publish                  # export pack/tessera-<v>.mempack (incl. cases.json)
+.venv/bin/python src/mesh.py install                  # install into Cognee (round-trip / contrast demo)
+.venv/bin/python src/consult_server.py                # Console at http://localhost:8000
+```
+
+Then attach the resulting `pack/tessera-<v>.mempack` to a **GitHub Release** so fresh Nodes
+can download it (see the keyless quickstart above).
 
 ## Repo layout
 
@@ -176,7 +208,8 @@ cp .env.example .env                      # paste one LLM key (Groq/Gemini/OpenA
 sources/       raw primary-source docs (the evidence layer)
 cases/         seven-field curated JSON (the expertise layer) — 40 cases
 ontology/      tessera.owl
-src/           validate / build / inspect / export / import / roundtrip / query / learn
+src/           validate / build / export / import / query / keyless / consult / learn
+               (keyless.py = local no-LLM retrieval; consult.py = keyless terminal consult)
 scripts/       throttled_build.py — resumable, rate-limit-friendly build for free tiers
 pack/          built .mempack artifacts
 docs/          static Mosaic project splash (GitHub Pages)

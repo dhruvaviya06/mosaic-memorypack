@@ -33,9 +33,11 @@ import os
 import re
 import sys
 
-import cognee
-from cognee.modules.search.types.SearchType import SearchType
 from config import PACK_DATASET, PACK_DISPLAY, CASES_DIR, DUMMY_CASE_IDS
+
+# NOTE: cognee is imported LAZILY inside consult() only. The product path
+# (consult_with_citations → keyless Step 1 + litellm Step 2) needs neither cognee nor a
+# key for Step 1, so importing this module stays light and works on a keyless fresh Node.
 
 # --- Case index: match a recalled precedent back to its structured case --------
 # recall() returns generated prose that NAMES a precedent (e.g. "Archegos", "IL&FS").
@@ -133,6 +135,8 @@ async def consult(situation: str, dataset: str = PACK_DATASET) -> str:
         default entity-seeded graph completion, which only fires when the query names an
         entity already in the graph.
     """
+    import cognee
+    from cognee.modules.search.types.SearchType import SearchType
     query = (
         f"{situation}\n\nWhat past financial-failure precedent from the pack most "
         f"closely matches this situation? Name it, give the warning signs and risk "
@@ -211,14 +215,19 @@ async def consult_with_citations(situation: str, dataset: str = PACK_DATASET,
       invitation      the map-it invitation (step 1 only)
       playbook        rewritten investigation steps (step 2 only, when map_to_situation)
       citations       [{case_id, institution, year, sources[...]}] evidence trail
+
+    Step 1 (identifying the precedent) is KEYLESS — it retrieves from the portable pack
+    locally via keyless.retrieve_context (fastembed, no LLM, no Cognee install needed). Only
+    Step 2 (map_to_situation) calls the LLM to tailor the playbook.
     """
-    from citations import citations_for
-    answer_text = await consult(situation, dataset)
-    case = match_case(answer_text, situation)
-    citations = citations_for(answer_text)
+    from citations import citations_for_case
+    from keyless import match_pack_case
+
+    case = match_pack_case(situation)                     # local case-level match, no key
+    citations = citations_for_case(case["case_id"]) if case else []
 
     result: dict = {
-        "answer": answer_text,
+        "answer": "(no close precedent found in the installed pack)",
         "precedent": None,
         "risk_factors": [],
         "invitation": "",

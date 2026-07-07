@@ -58,6 +58,22 @@ def build_graph_json(nodes, edges) -> dict:
     return {"nodes": out_nodes, "edges": out_edges}
 
 
+def build_cases_digest() -> list[dict]:
+    """The curated cases in clean, case-level form, embedded into the pack as cases.json.
+
+    This is what the KEYLESS retriever (keyless.py) embeds locally to find the closest
+    precedent with no LLM — so the .mempack stays the single self-contained portable unit.
+    Unsealed (not in the content hash); the sealed graph remains the integrity anchor.
+    """
+    out = []
+    for path in sorted(CASES_DIR.glob("*.json")):
+        d = json.loads(path.read_text())
+        if d["case_id"] in DUMMY_CASE_IDS:
+            continue
+        out.append(d)
+    return out
+
+
 def build_provenance() -> dict:
     """Document-level provenance from the curated case files (the auditability story).
 
@@ -113,6 +129,7 @@ async def export() -> int:
 
     graph = build_graph_json(nodes, edges)
     provenance = build_provenance()
+    cases_digest = build_cases_digest()
     ontology_bytes = ONTOLOGY_FILE.read_bytes() if ONTOLOGY_FILE.exists() else b""
     if not ontology_bytes:
         print(f"WARNING: {ONTOLOGY_FILE} missing — packaging without an ontology.")
@@ -134,6 +151,7 @@ async def export() -> int:
         "graph.json": graph_bytes,
         PACK_ONTOLOGY_MEMBER: ontology_bytes,
         "provenance.json": prov_bytes,
+        "cases.json": _canonical(cases_digest),   # unsealed — powers keyless retrieval
         "pack.json": manifest_bytes,
     }
     with tarfile.open(PACK_FILE, "w:gz") as tar:
